@@ -1,43 +1,365 @@
-This work was packaged for Debian by:
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: mate-settings-daemon
+Upstream-Contact: Stefano Karapetsas <stefano@karapetsas.com>
+Source: http://pub.mate-desktop.org/releases/
 
-    Stefano Karapetsas <stefano@karapetsas.com> on Sat, 22 Oct 2011 01:31:28 +0200
+Files: mate-settings-daemon/main.c
+       mate-settings-daemon/mate-settings-manager.c
+       mate-settings-daemon/mate-settings-manager.h
+       mate-settings-daemon/mate-settings-plugin-info.c
+       mate-settings-daemon/mate-settings-profile.c
+       mate-settings-daemon/mate-settings-profile.h
+       plugins/a11y-keyboard/msd-a11y-keyboard-manager.h
+       plugins/a11y-keyboard/msd-a11y-keyboard-plugin.c
+       plugins/a11y-keyboard/msd-a11y-keyboard-plugin.h
+       plugins/a11y-keyboard/test-a11y-preferences-dialog.c
+       plugins/background/msd-background-manager.h
+       plugins/background/msd-background-plugin.c
+       plugins/background/msd-background-plugin.h
+       plugins/background/test-background.c
+       plugins/clipboard/msd-clipboard-manager.h
+       plugins/clipboard/msd-clipboard-plugin.c
+       plugins/clipboard/msd-clipboard-plugin.h
+       plugins/dummy/msd-dummy-manager.c
+       plugins/dummy/msd-dummy-manager.h
+       plugins/dummy/msd-dummy-plugin.c
+       plugins/dummy/msd-dummy-plugin.h
+       plugins/keybindings/msd-keybindings-manager.c
+       plugins/keybindings/msd-keybindings-manager.h
+       plugins/keybindings/msd-keybindings-plugin.c
+       plugins/keybindings/msd-keybindings-plugin.h
+       plugins/keyboard/msd-keyboard-manager.h
+       plugins/keyboard/msd-keyboard-plugin.c
+       plugins/keyboard/msd-keyboard-plugin.h
+       plugins/media-keys/msd-media-keys-manager.h
+       plugins/media-keys/msd-media-keys-plugin.c
+       plugins/media-keys/msd-media-keys-plugin.h
+       plugins/media-keys/test-media-keys.c
+       plugins/media-keys/test-media-window.c
+       plugins/mouse/msd-mouse-manager.c
+       plugins/mouse/msd-mouse-manager.h
+       plugins/mouse/msd-mouse-plugin.c
+       plugins/mouse/msd-mouse-plugin.h
+       plugins/mpris/msd-mpris-plugin.c
+       plugins/mpris/msd-mpris-plugin.h
+       plugins/typing-break/msd-typing-break-manager.c
+       plugins/typing-break/msd-typing-break-manager.h
+       plugins/typing-break/msd-typing-break-plugin.c
+       plugins/typing-break/msd-typing-break-plugin.h
+       plugins/xrandr/msd-xrandr-manager.h
+       plugins/xrandr/msd-xrandr-plugin.c
+       plugins/xrandr/msd-xrandr-plugin.h
+       plugins/xrdb/msd-xrdb-manager.h
+       plugins/xrdb/msd-xrdb-plugin.c
+       plugins/xrdb/msd-xrdb-plugin.h
+       plugins/xsettings/msd-xsettings-manager.h
+       plugins/xsettings/msd-xsettings-plugin.c
+       plugins/xsettings/msd-xsettings-plugin.h
+Copyright: 2005, 2007 William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: mate-settings-daemon/mate-settings-plugin-info.h
+       plugins/media-keys/cut-n-paste/gvc-channel-map.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-card.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-control.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-event-role.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-sink-input.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-sink.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-source-output.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-source.h
+       plugins/media-keys/cut-n-paste/gvc-mixer-stream.h
+       plugins/smartcard/msd-smartcard-manager.c
+       plugins/smartcard/msd-smartcard-manager.h
+       plugins/smartcard/msd-smartcard-plugin.c
+       plugins/smartcard/msd-smartcard-plugin.h
+       plugins/xsettings/fontconfig-monitor.c
+       plugins/xsettings/fontconfig-monitor.h
+Copyright: 2006, 2008, 2009, 2010 Red Hat, Inc
+License: GPL-2+
+ 
+Files: plugins/clipboard/list.c
+       plugins/clipboard/list.h
+       plugins/clipboard/xutils.c
+       plugins/clipboard/xutils.h
+       plugins/xsettings/xsettings-common.c
+       plugins/xsettings/xsettings-common.h
+       plugins/xsettings/xsettings-manager.c
+       plugins/xsettings/xsettings-manager.h
+Copyright: 2001, 2004 Red Hat, Inc
+License: UNKNOWN
+Specified files lack copyright/license information in the
+(non-present) file header.
+ 
+Files: plugins/media-keys/cut-n-paste/gvc-channel-map.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-event-role.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-sink-input.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-sink.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-source-output.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-source.c
+       plugins/media-keys/cut-n-paste/gvc-mixer-stream.c
+Copyright: 2008, William Jon McCann
+License: GPL-2+
+ 
+Files: plugins/datetime/system-timezone.h
+       plugins/housekeeping/msd-disk-space.c
+       plugins/housekeeping/msd-disk-space.h
+       plugins/keyboard/delayed-dialog.c
+       plugins/keyboard/delayed-dialog.h
+Copyright: 2006, 2008 Novell, Inc
+License: GPL-2+
+ 
+Files: plugins/sound/msd-sound-manager.c
+       plugins/sound/msd-sound-manager.h
+       plugins/sound/msd-sound-plugin.c
+       plugins/sound/msd-sound-plugin.h
+Copyright: 2008, Lennart Poettering <lennart@poettering.net>
+License: GPL-2+
+ 
+Files: plugins/media-keys/msd-marshal.c
+       plugins/media-keys/msd-marshal.h
+       plugins/media-keys/msd-media-keys-manager-glue.h
+       plugins/xrandr/msd-xrandr-manager-glue.h
+Copyright: *No copyright*
+License: UNKNOWN
+Specified files lack copyright/license information in the
+(non-present) file header.
+ 
+Files: plugins/mouse/msd-locate-pointer.c
+       plugins/mouse/msd-timeline.c
+       plugins/mouse/msd-timeline.h
+Copyright: 2008, Carlos Garnacho <carlos@imendio.com>
+License: GPL-2+
+ 
+Files: plugins/datetime/msd-datetime-mechanism-main.c
+       plugins/datetime/msd-datetime-mechanism.c
+       plugins/datetime/msd-datetime-mechanism.h
+Copyright: 2007, David Zeuthen <david@fubar.dk>
+License: GPL-2+
+ 
+Files: plugins/housekeeping/msd-housekeeping-manager.h
+       plugins/housekeeping/msd-housekeeping-plugin.c
+       plugins/housekeeping/msd-housekeeping-plugin.h
+Copyright: 2008, Michael J. Chudobiak <mjc@avtechpulse.com>
+License: GPL-2+
 
-It was downloaded from:
+Files: plugins/housekeeping/msd-ldsm-dialog.c
+       plugins/housekeeping/msd-ldsm-dialog.h
+       plugins/housekeeping/msd-ldsm-trash-empty.h
+Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
+License: GPL-3+
+This package is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your opinion) any later version.
+ 
+Files: mate-settings-daemon/mate-settings-module.c
+       mate-settings-daemon/mate-settings-module.h
+Copyright: 2005, - Paolo Maggi
+License: GPL-2+
+ 
+Files: mate-settings-daemon/mate-settings-plugin.c
+       mate-settings-daemon/mate-settings-plugin.h
+Copyright: 2002-2005, Paolo Maggi
+           2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/keybindings/dconf-util.c
+       plugins/keybindings/dconf-util.h
+Copyright: 2012, Stefano Karapetsas
+License: GPL-2+
+ 
+Files: plugins/mpris/msd-mpris-manager.c
+       plugins/mpris/msd-mpris-manager.h
+Copyright: 2013, Stefano Karapetsas <stefano@karapetsas.com>
+License: GPL-2+
+ 
+Files: plugins/keyboard/msd-keyboard-xkb.c
+       plugins/keyboard/msd-keyboard-xkb.h
+Copyright: 2001, Udaltsoft
+License: GPL-2+
+ 
+Files: plugins/a11y-keyboard/msd-a11y-preferences-dialog.c
+       plugins/a11y-keyboard/msd-a11y-preferences-dialog.h
+Copyright: 2008, William Jon McCann <jmccann@redhat.com>
+License: GPL-2+
+ 
+Files: plugins/a11y-keyboard/msd-a11y-keyboard-manager.c
+       plugins/keyboard/msd-keyboard-manager.c
+Copyright: 2001, Ximian, Inc
+           2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/media-keys/cut-n-paste/gvc-gstreamer-acme-vol.c
+       plugins/media-keys/cut-n-paste/gvc-gstreamer-acme-vol.h
+Copyright: 2002-2003, Bastien Nocera
+           2004, Novell, Inc
+           2009, PERIER Romain <mrpouet@tuxfamily.org>
+           2011, Stefano Karapetsas <stefano@karapetsas.com>
+License: LGPL-2+
+ 
+Files: plugins/common/msd-osd-window.c
+       plugins/common/msd-osd-window.h
+Copyright: 2006, 2007 William Jon McCann <mccann@jhu.edu>
+           2009, Novell, Inc
+License: LGPL-2+
+ 
+Files: plugins/media-keys/msd-media-keys-window.c
+       plugins/media-keys/msd-media-keys-window.h
+Copyright: 2006, William Jon McCann <mccann@jhu.edu>
+           2006-2007, William Jon McCann <mccann@jhu.edu>
+License: LGPL-2+
+ 
+Files: ltmain.sh
+Copyright: 1996-2001, 2003-2006
+License: GPL-2+
+ 
+Files: plugins/clipboard/msd-clipboard-manager.c
+Copyright: 2007, Anders Carlsson
+           2007, Matthias Clasen
+           2007, Rodrigo Moya
+           2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/media-keys/cut-n-paste/gvc-mixer-card.c
+Copyright: 2008, William Jon McCann
+           2009, Bastien Nocera
+License: GPL-2+
+ 
+Files: plugins/media-keys/acme.h
+Copyright: 2001, Bastien Nocera <hadess@hadess.net>
+License: GPL-2+
+ 
+Files: plugins/common/msd-keygrab.c
+Copyright: 2001-2003, Bastien Nocera <hadess@hadess.net>
+           2006-2007, William Jon McCann <mccann@jhu.edu>
+           2008, Jens Granseuer <jensgr@gmx.net>
+License: GPL-2+
+ 
+Files: plugins/media-keys/msd-media-keys-manager.c
+Copyright: 2001-2003, Bastien Nocera <hadess@hadess.net>
+           2006-2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/housekeeping/msd-housekeeping-manager.c
+Copyright: 2008, Michael J. Chudobiak <mjc@avtechpulse.com>
+           2012, Jasmine Hassan <jasmine.aura@gmail.com>
+License: GPL-2+
+ 
+Files: plugins/background/msd-background-manager.c
+Copyright: 2001, Ximian, Inc
+           2007, Red Hat, Inc
+           2007, William Jon McCann <mccann@jhu.edu>
+           2012, Jasmine Hassan <jasmine.aura@gmail.com>
+License: GPL-2+
+ 
+Files: plugins/common/msd-keygrab.h
+Copyright: 2008, Jens Granseuer <jensgr@gmx.net>
+License: GPL-2+
+ 
+Files: plugins/media-keys/cut-n-paste/gvc-mixer-control.c
+Copyright: 2006-2008, Lennart Poettering
+           2008, Sjoerd Simons <sjoerd@luon.net>
+           2008, William Jon McCann
+License: GPL-2+
+ 
+Files: plugins/datetime/system-timezone.c
+Copyright: 2000-2001, Ximian, Inc
+           2004, Sun Microsystems, Inc
+           2008, Novell, Inc
+License: GPL-2+
+ 
+Files: plugins/smartcard/msd-smartcard.h
+Copyright: 2006, Ray Strode
+License: GPL-2+
+ 
+Files: plugins/smartcard/msd-smartcard.c
+Copyright: 2006, Ray Strode <rstrode@redhat.com>
+License: GPL-2+
+ 
+Files: plugins/xrandr/msd-xrandr-manager.c
+Copyright: 2007, William Jon McCann <mccann@jhu.edu>
+           2007-2008, Red Hat, Inc
+License: GPL-2+
+ 
+Files: plugins/xsettings/msd-xsettings-manager.c
+Copyright: 2007, Rodrigo Moya
+           2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/xrdb/msd-xrdb-manager.c
+Copyright: 2003, Ross Burton <ross@burtonini.com>
+           2007, William Jon McCann <mccann@jhu.edu>
+License: GPL-2+
+ 
+Files: plugins/housekeeping/msd-ldsm-trash-empty.c
+Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
+           Ryan Lortie 2008
+License: GPL-3+
+This package is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your opinion) any later version.
+ 
+Files: plugins/common/eggaccelerators.h
+Copyright: 2002, Red Hat, Inc
+License: LGPL-2+
+ 
+Files: plugins/common/eggaccelerators.c
+Copyright: 2002, Red Hat, Inc.; 1998, 2001 Tim Janik
+License: LGPL-2+
+ 
+Files: plugins/mouse/msd-locate-pointer.h
+Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
+License: UNKNOWN
+Specified files lack copyright/license information in the
+(non-present) file header.
+ 
+Files: debian/*
+Copyright: 2011 Stefano Karapetsas <stefano@karapetsas.com>
+           2013 Mike Gabriel <sunweaver@debian.org>
+License: GPL-2+
 
-    <https://github.com/Perberos/Mate-Desktop-Environment>
-
-Upstream Author:
-
-    Perberos <perberos@gmail.com>
-
-Copyright:
-
-    Copyright (C) 2011 Perberos
-
-License:
-
-    This package is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This package is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program. If not, see <http://www.gnu.org/licenses/>
-
+License: GPL-2+
+ 
+This package is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your opinion) any later version.
+.
+This package is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Genaral Public License for more details.
+.
+You should have received a copy og the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>
+.
 On Debian systems, the complete text of the GNU General
 Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
-The Debian packaging is:
+License: LGPL-2+
 
-    Copyright (C) 2011 Stefano Karapetsas <stefano@karapetsas.com>
+  The licenses for most software are designed to take away your
+freedom to share and change it. By contrast, the GNU General Public
+Licenses are intended to guarantee your freedom to share and change
+free software--to make sure the software is free for all its users.
 
-you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+  This license, the Library General Public License, applies to some
+specially designated Free Software Foundation software, and to any
+other libraries whose authors decide to use it. You can use it for
+your libraries, too.
 
+  When we speak of free software, we are referring to freedom, not
+price. Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+this service if you wish), that you receive source code or can get it
+if you want it, that you can change the software or use pieces of it
+in new free programs; and that you know you can do these things.
+
+  To protect your rights, we need to make restrictions that forbid
+anyone to deny you these rights or to ask you to surrender the rights.
+These restrictions translate to certain responsibilities for you if
+you distribute copies of the library, or if you modify it.
+.
+On Debian systems, the complete text of the GNU General
+Public License version LGPL-2 can be found in "/usr/share/common-licenses/LGPL-2".
