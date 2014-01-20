@@ -36,6 +36,8 @@ Build-Depends: debhelper (>= 9),
                mate-common
 Standards-Version: 3.9.5
 Homepage: http://www.mate-desktop.org/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-mate/mate-settings-daemon.git;a=summary
+Vcs-Git: git://anonscm.debian.org/pkg-mate/mate-settings-daemon.git
 
 Package: mate-settings-daemon
 Architecture: all
