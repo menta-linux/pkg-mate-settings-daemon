@@ -43,7 +43,7 @@ Package: mate-settings-daemon
 Architecture: all
 Depends: ${misc:Depends},
          mate-settings-daemon-gstreamer (>= ${source:Version}) | mate-settings-daemon-pulse (>= ${source:Version})
-Description: daemon handling the MATE session settings (metapackage)
+Description: MATE session settings daemon (metapackage)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -69,7 +69,7 @@ Depends: ${shlibs:Depends},
          x11-xserver-utils
 Replaces: mate-settings-daemon (<< 1.1.1-1)
 Conflicts: mate-settings-daemon-pulse
-Description: daemon handling the MATE session settings (GStreamer version)
+Description: MATE session settings daemon (GStreamer version)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -96,7 +96,7 @@ Depends: ${shlibs:Depends},
          x11-xserver-utils
 Replaces: mate-settings-daemon (<< 1.1.1-1)
 Conflicts: mate-settings-daemon-gstreamer
-Description: daemon handling the MATE session settings (PulseAudio version)
+Description: MATE session settings daemon (PulseAudio version)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -118,7 +118,7 @@ Package: mate-settings-daemon-common
 Architecture: all
 Depends: ${misc:Depends}
 Replaces: mate-settings-daemon (<< 1.1.1-1)
-Description: daemon handling the MATE session settings (common files)
+Description: MATE session settings daemon (common files)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -142,7 +142,7 @@ Priority: extra
 Architecture: any
 Depends: ${misc:Depends},
          mate-settings-daemon-gstreamer (= ${binary:Version})
-Description: daemon handling the MATE session settings (debugging symbols)
+Description: MATE session settings daemon (GStreamer version, debugging symbols)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -158,7 +158,7 @@ Description: daemon handling the MATE session settings (debugging symbols)
  It also sets various application settings through X resources and
  freedesktop.org XSETTINGS.
  .
- This package contains the debugging symbols of the gstreamer backend.
+ This package contains the debugging symbols of the GStreamer backend.
  .
  The debugging symbols are installed in /usr/lib/debug and will
  automatically be used by gdb.
@@ -169,7 +169,7 @@ Priority: extra
 Architecture: any
 Depends: ${misc:Depends},
          mate-settings-daemon-pulse (= ${binary:Version})
-Description: daemon handling the MATE session settings (debugging symbols)
+Description: MATE session settings daemon (PulseAudio version, debugging symbols)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
  under it. It handles the following kinds of settings:
@@ -185,7 +185,7 @@ Description: daemon handling the MATE session settings (debugging symbols)
  It also sets various application settings through X resources and
  freedesktop.org XSETTINGS.
  .
- This package contains the debugging symbols for the pulseaudio backend.
+ This package contains the debugging symbols for the PulseAudio backend.
  .
  The debugging symbols are installed in /usr/lib/debug and will
  automatically be used by gdb.
