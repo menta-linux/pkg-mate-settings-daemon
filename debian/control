@@ -12,7 +12,7 @@ Build-Depends: debhelper (>= 9),
                libdbus-glib-1-dev,
                libglib2.0-dev,
                libgtk2.0-dev,
-               libmate-desktop-dev (>= 1.7.0),
+               libmate-desktop-dev,
                libnotify-dev,
                libxt-dev,
                libxi-dev,
@@ -21,12 +21,12 @@ Build-Depends: debhelper (>= 9),
                libfontconfig1-dev,
                libxext-dev,
                libx11-dev,
-               libmatekbd-dev (>= 1.7.0),
+               libmatekbd-dev,
                libxklavier-dev,
                libgstreamer0.10-dev,
                libgstreamer-plugins-base0.10-dev,
                libstartup-notification0-dev,
-               libmatepolkit-dev (>= 1.5.0),
+               libmatepolkit-dev,
                libpolkit-agent-1-dev,
                libpolkit-gobject-1-dev,
                libpulse-dev,
@@ -136,7 +136,34 @@ Description: daemon handling the MATE session settings (common files)
  .
  This package contains the architecture independent files.
 
-Package: mate-settings-daemon-dbg
+Package: mate-settings-daemon-gstreamer-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends},
+         mate-settings-daemon-gstreamer (= ${binary:Version})
+Description: daemon handling the MATE session settings (debugging symbols)
+ This package contains the daemon which is responsible for setting the
+ various parameters of a MATE session and the applications that run
+ under it. It handles the following kinds of settings:
+ .
+  * Keyboard: layout, accessibility options, shortcuts, media keys
+  * Clipboard management
+  * Theming: background, icons, GTK+ applications
+  * Cleanup of unused files
+  * Mouse: cursors, speed, accessibility options
+  * Startup of other daemons: screensaver, sound daemon
+  * Typing break
+ .
+ It also sets various application settings through X resources and
+ freedesktop.org XSETTINGS.
+ .
+ This package contains the debugging symbols of the gstreamer backend.
+ .
+ The debugging symbols are installed in /usr/lib/debug and will
+ automatically be used by gdb.
+
+Package: mate-settings-daemon-pulse-dbg
 Section: debug
 Priority: extra
 Architecture: any
@@ -158,7 +185,8 @@ Description: daemon handling the MATE session settings (debugging symbols)
  It also sets various application settings through X resources and
  freedesktop.org XSETTINGS.
  .
- This package contains the debugging symbols of the Python bindings.
+ This package contains the debugging symbols for the pulseaudio backend.
  .
  The debugging symbols are installed in /usr/lib/debug and will
  automatically be used by gdb.
+
