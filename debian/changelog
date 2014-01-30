@@ -1,7 +1,5 @@
-mate-settings-daemon (1.6.1-1) UNRELEASED; urgency=low
+mate-settings-daemon (1.6.1-1) unstable; urgency=low
 
   * Inital release. (Closes: #728489).
 
- -- Stefano Karapetsas <stefano@karapetsas.com>  Wed, 03 Jul 2013 11:44:45 +0200
-
-
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 31 Jan 2014 00:01:02 +0100
