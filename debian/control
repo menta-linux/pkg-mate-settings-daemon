@@ -1,7 +1,7 @@
 Source: mate-settings-daemon
 Section: x11
 Priority: optional
-Maintainer: MATE Packaging Team
+Maintainer: MATE Packaging Team <pkg-mate-team@lists.alioth.debian.org>
 Uploaders: Mike Gabriel <sunweaver@debian.org>,
            John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
            Stefano Karapetsas <stefano@karapetsas.com>,
@@ -143,7 +143,22 @@ Architecture: any
 Depends: ${misc:Depends},
          mate-settings-daemon-pulse (= ${binary:Version})
 Description: daemon handling the MATE session settings (debugging symbols)
- This package contains debugging symbols for the mate-settings-daemon
- package. It is provided to help debugging problems in the daemon. The
- debugging symbols are installed in /usr/lib/debug and will automatically be
- used by gdb.
+ This package contains the daemon which is responsible for setting the
+ various parameters of a MATE session and the applications that run
+ under it. It handles the following kinds of settings:
+ .
+  * Keyboard: layout, accessibility options, shortcuts, media keys
+  * Clipboard management
+  * Theming: background, icons, GTK+ applications
+  * Cleanup of unused files
+  * Mouse: cursors, speed, accessibility options
+  * Startup of other daemons: screensaver, sound daemon
+  * Typing break
+ .
+ It also sets various application settings through X resources and
+ freedesktop.org XSETTINGS.
+ .
+ This package contains the debugging symbols of the Python bindings.
+ .
+ The debugging symbols are installed in /usr/lib/debug and will
+ automatically be used by gdb.
