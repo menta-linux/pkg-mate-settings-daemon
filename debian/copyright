@@ -74,7 +74,7 @@ Files: mate-settings-daemon/mate-settings-plugin-info.h
        plugins/smartcard/msd-smartcard-plugin.h
        plugins/xsettings/fontconfig-monitor.c
        plugins/xsettings/fontconfig-monitor.h
-Copyright: 2006, 2008, 2009, 2010 Red Hat, Inc
+Copyright: 2006-2010 Red Hat, Inc
 License: GPL-2+
  
 Files: plugins/clipboard/list.c
@@ -86,9 +86,7 @@ Files: plugins/clipboard/list.c
        plugins/xsettings/xsettings-manager.c
        plugins/xsettings/xsettings-manager.h
 Copyright: 2001, 2004 Red Hat, Inc
-License: UNKNOWN
-Specified files lack copyright/license information in the
-(non-present) file header.
+License: MIT~OldStyleWithDisclaimer+RedHat
  
 Files: plugins/media-keys/cut-n-paste/gvc-channel-map.c
        plugins/media-keys/cut-n-paste/gvc-mixer-event-role.c
@@ -115,15 +113,6 @@ Files: plugins/sound/msd-sound-manager.c
 Copyright: 2008, Lennart Poettering <lennart@poettering.net>
 License: GPL-2+
  
-Files: plugins/media-keys/msd-marshal.c
-       plugins/media-keys/msd-marshal.h
-       plugins/media-keys/msd-media-keys-manager-glue.h
-       plugins/xrandr/msd-xrandr-manager-glue.h
-Copyright: *No copyright*
-License: UNKNOWN
-Specified files lack copyright/license information in the
-(non-present) file header.
- 
 Files: plugins/mouse/msd-locate-pointer.c
        plugins/mouse/msd-timeline.c
        plugins/mouse/msd-timeline.h
@@ -147,14 +136,10 @@ Files: plugins/housekeeping/msd-ldsm-dialog.c
        plugins/housekeeping/msd-ldsm-trash-empty.h
 Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
 License: GPL-3+
-This package is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your opinion) any later version.
  
 Files: mate-settings-daemon/mate-settings-module.c
        mate-settings-daemon/mate-settings-module.h
-Copyright: 2005, - Paolo Maggi
+Copyright: 2005, Paolo Maggi
 License: GPL-2+
  
 Files: mate-settings-daemon/mate-settings-plugin.c
@@ -199,7 +184,7 @@ License: LGPL-2+
  
 Files: plugins/common/msd-osd-window.c
        plugins/common/msd-osd-window.h
-Copyright: 2006, 2007 William Jon McCann <mccann@jhu.edu>
+Copyright: 2006-2007 William Jon McCann <mccann@jhu.edu>
            2009, Novell, Inc
 License: LGPL-2+
  
@@ -295,71 +280,272 @@ Files: plugins/housekeeping/msd-ldsm-trash-empty.c
 Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
            Ryan Lortie 2008
 License: GPL-3+
-This package is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your opinion) any later version.
- 
-Files: plugins/common/eggaccelerators.h
-Copyright: 2002, Red Hat, Inc
-License: LGPL-2+
  
 Files: plugins/common/eggaccelerators.c
-Copyright: 2002, Red Hat, Inc.; 1998, 2001 Tim Janik
+Copyright: 2002, Red Hat, Inc.
+           1998, 2001, Tim Janik
+License: LGPL-2+
+ 
+Files: plugins/common/eggaccelerators.h
+Copyright: 2002, Red Hat, Inc.
 License: LGPL-2+
  
 Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
-License: UNKNOWN
-Specified files lack copyright/license information in the
-(non-present) file header.
- 
-Files: debian/*
-Copyright: 2011 Stefano Karapetsas <stefano@karapetsas.com>
-           2013 Mike Gabriel <sunweaver@debian.org>
+License: MIT~OldStyle+RedHat
+
+Files: INSTALL
+Copyright: 1994-2013, Free Software Foundation, Inc.
+License:
+ Copying and distribution of this file, with or without modification,
+ are permitted in any medium without royalty provided the copyright
+ notice and this notice are preserved.  This file is offered as-is,
+ without warranty of any kind.
+
+Files: data/Makefile.am
+       data/*.in.in
+       Makefile.am
+       mate-settings-daemon/Makefile.am
+       mate-settings-daemon/mate-settings-manager.xml
+       plugins/a11y-keyboard/Makefile.am
+       plugins/a11y-keyboard/*.mate-settings-daemon.in
+       plugins/a11y-keyboard/*.ui
+       plugins/background/Makefile.am
+       plugins/background/*.mate-settings-daemon.in
+       plugins/clipboard/Makefile.am
+       plugins/clipboard/*.mate-settings-daemon.in
+       plugins/common/Makefile.am
+       plugins/datetime/Makefile.am
+       plugins/datetime/*.conf
+       plugins/datetime/org.mate.SettingsDaemon.*.in
+       plugins/datetime/*.xml
+       plugins/dummy/Makefile.am
+       plugins/dummy/*.mate-settings-daemon.in
+       plugins/housekeeping/Makefile.am
+       plugins/housekeeping/*.mate-settings-daemon.in
+       plugins/keybindings/Makefile.am
+       plugins/keybindings/*.mate-settings-daemon.in
+       plugins/keyboard/Makefile.am
+       plugins/keyboard/*.mate-settings-daemon.in
+       plugins/keyboard/*.png
+       plugins/Makefile.am
+       plugins/media-keys/cut-n-paste/Makefile.am
+       plugins/media-keys/Makefile.am
+       plugins/media-keys/msd-marshal.*
+       plugins/media-keys/msd-media-keys-manager-glue.h
+       plugins/media-keys/*.mate-settings-daemon.in
+       plugins/media-keys/*.list
+       plugins/media-keys/*.png
+       plugins/media-keys/*.svg
+       plugins/media-keys/*.ui
+       plugins/media-keys/*.xml
+       plugins/mouse/Makefile.am
+       plugins/mouse/*.mate-settings-daemon.in
+       plugins/mpris/Makefile.am
+       plugins/mpris/*.mate-settings-daemon.in
+       plugins/smartcard/Makefile.am
+       plugins/smartcard/*.mate-settings-daemon.in
+       plugins/sound/Makefile.am
+       plugins/sound/*.mate-settings-daemon.in
+       plugins/typing-break/Makefile.am
+       plugins/typing-break/*.mate-settings-daemon.in
+       plugins/xrandr/Makefile.am
+       plugins/xrandr/*.mate-settings-daemon.in
+       plugins/xrandr/*.png
+       plugins/xrandr/*.xml
+       plugins/xrandr/*.svg
+       plugins/xrandr/msd-xrandr-manager-glue.h
+       plugins/xrdb/data/Makefile.am
+       plugins/xrdb/Makefile.am
+       plugins/xrdb/data/*.ad
+       plugins/xrdb/*.mate-settings-daemon.in
+       plugins/xsettings/Makefile.am
+       plugins/xsettings/*.mate-settings-daemon.in
+       ChangeLog
+       NEWS
+       README
+       acinclude.m4
+       config.h.in
+       configure.ac
+Copyright: *No Copyright*
+License: GPL-2+ or LGPL-2.1+
+Comment:
+ License(s) assumed from COPYING and COPYING.LIB files.
+
+Files: aclocal.m4
+Copyright: 1996-2013, Free Software Foundation, Inc.
+License:
+ This file is free software; the Free Software Foundation
+ gives unlimited permission to copy and/or distribute it,
+ with or without modifications, as long as this notice is preserved.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+ even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE.
+
+Files: compile
+       depcomp
+       ltmain.sh
+       missing
+Copyright: 1996-2013, Free Software Foundation, Inc.
 License: GPL-2+
 
+Files: config.guess
+       config.sub
+Copyright: 1992-2013, Free Software Foundation, Inc.
+License: GPL-3+
+
+Files: install-sh
+Copyright: 1994, X Consortium
+License: MIT-X11
+
+Files: data/Makefile.in
+       Makefile.in
+       mate-settings-daemon/Makefile.in
+       plugins/a11y-keyboard/Makefile.in
+       plugins/background/Makefile.in
+       plugins/clipboard/Makefile.in
+       plugins/common/Makefile.in
+       plugins/datetime/Makefile.in
+       plugins/dummy/Makefile.in
+       plugins/housekeeping/Makefile.in
+       plugins/keybindings/Makefile.in
+       plugins/keyboard/Makefile.in
+       plugins/Makefile.in
+       plugins/media-keys/cut-n-paste/Makefile.in
+       plugins/media-keys/Makefile.in
+       plugins/mouse/Makefile.in
+       plugins/mpris/Makefile.in
+       plugins/smartcard/Makefile.in
+       plugins/sound/Makefile.in
+       plugins/typing-break/Makefile.in
+       plugins/xrandr/Makefile.in
+       plugins/xrdb/data/Makefile.in
+       plugins/xrdb/Makefile.in
+       plugins/xsettings/Makefile.in
+Copyright: 1994-2013, Free Software Founation, Inc.
+License:
+ This Makefile.in is free software; the Free Software Foundation
+ gives unlimited permission to copy and/or distribute it,
+ with or without modifications, as long as this notice is preserved.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+ even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE.
+
+Files: debian/*
+Copyright: 2011-2014 Stefano Karapetsas <stefano@karapetsas.com>
+           2014 Mike Gabriel <sunweaver@debian.org>
+License: GPL-2+ or GPL-3+ or LGPL-2+ or LGPL-2.1+ or MIT~OldStyle+RedHat or MIT~OldStyleWithDisclaimer+RedHat
+
 License: GPL-2+
- 
-This package is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your opinion) any later version.
-.
-This package is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Genaral Public License for more details.
-.
-You should have received a copy og the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>
-.
-On Debian systems, the complete text of the GNU General
-Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your opinion) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU Genaral Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: GPL-3+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version LGPL-2 can be found in
+ "/usr/share/common-licenses/LGPL-2".
 
-  The licenses for most software are designed to take away your
-freedom to share and change it. By contrast, the GNU General Public
-Licenses are intended to guarantee your freedom to share and change
-free software--to make sure the software is free for all its users.
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version LGPL-2.1 can be found in
+ "/usr/share/common-licenses/LGPL-2.1".
 
-  This license, the Library General Public License, applies to some
-specially designated Free Software Foundation software, and to any
-other libraries whose authors decide to use it. You can use it for
-your libraries, too.
+License: MIT~OldStyle+RedHat
+ Permission to use, copy, modify, distribute, and sell this software and its
+ documentation for any purpose is hereby granted without fee, provided that
+ the above copyright notice appear in all copies and that both that
+ copyright notice and this permission notice appear in supporting
+ documentation, and that the name of Red Hat not be used in advertising or
+ publicity pertaining to distribution of the software without specific,
+ written prior permission.  Red Hat makes no representations about the
+ suitability of this software for any purpose.  It is provided "as is"
+ without express or implied warranty.
 
-  When we speak of free software, we are referring to freedom, not
-price. Our General Public Licenses are designed to make sure that you
-have the freedom to distribute copies of free software (and charge for
-this service if you wish), that you receive source code or can get it
-if you want it, that you can change the software or use pieces of it
-in new free programs; and that you know you can do these things.
+License: MIT~OldStyleWithDisclaimer+RedHat
+ Permission to use, copy, modify, distribute, and sell this software and its
+ documentation for any purpose is hereby granted without fee, provided that
+ the above copyright notice appear in all copies and that both that
+ copyright notice and this permission notice appear in supporting
+ documentation, and that the name of Red Hat not be used in advertising or
+ publicity pertaining to distribution of the software without specific,
+ written prior permission.  Red Hat makes no representations about the
+ suitability of this software for any purpose.  It is provided "as is"
+ without express or implied warranty.
+ .
+ RED HAT DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL RED HAT
+ BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
+ OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN 
+ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-  To protect your rights, we need to make restrictions that forbid
-anyone to deny you these rights or to ask you to surrender the rights.
-These restrictions translate to certain responsibilities for you if
-you distribute copies of the library, or if you modify it.
-.
-On Debian systems, the complete text of the GNU General
-Public License version LGPL-2 can be found in "/usr/share/common-licenses/LGPL-2".
+License: MIT-X11
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNEC-
+ TION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Except as contained in this notice, the name of the X Consortium shall not
+ be used in advertising or otherwise to promote the sale, use or other deal-
+ ings in this Software without prior written authorization from the X Consor-
+ tium.
