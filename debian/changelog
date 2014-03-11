@@ -1,4 +1,4 @@
-mate-settings-daemon (1.8.0-1) UNRELEASED; urgency=low
+mate-settings-daemon (1.8.0-1) unstable; urgency=low
 
   * New upstream release.
   * debian/watch:
@@ -10,7 +10,7 @@ mate-settings-daemon (1.8.0-1) UNRELEASED; urgency=low
   * man pages:
     + Drop debian/man/mate-settings-daemon.1. Provided in upstream sources now.
 
- -- Mike Gabriel <sunweaver@debian.org>  Tue, 11 Mar 2014 21:54:50 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 11 Mar 2014 22:15:19 +0100
 
 mate-settings-daemon (1.6.1-1) unstable; urgency=low
 
