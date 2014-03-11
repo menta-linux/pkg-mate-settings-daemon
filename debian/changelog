@@ -1,6 +1,14 @@
 mate-settings-daemon (1.8.0-1) UNRELEASED; urgency=low
 
   * New upstream release.
+  * debian/watch:
+    + Use tagged CGit tarball snapshots as upstream source.
+  * debian/copyright:
+    + Adapt to files in new upstream tarball.
+  * debian/rules:
+    + Build package using autogen.sh.
+  * man pages:
+    + Drop debian/man/mate-settings-daemon.1. Provided in upstream sources now.
 
  -- Mike Gabriel <sunweaver@debian.org>  Tue, 11 Mar 2014 21:54:50 +0100
 
