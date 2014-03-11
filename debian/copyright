@@ -294,14 +294,6 @@ Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
 License: MIT~OldStyle+RedHat
 
-Files: INSTALL
-Copyright: 1994-2013, Free Software Foundation, Inc.
-License:
- Copying and distribution of this file, with or without modification,
- are permitted in any medium without royalty provided the copyright
- notice and this notice are preserved.  This file is offered as-is,
- without warranty of any kind.
-
 Files: data/Makefile.am
        data/*.in.in
        Makefile.am
@@ -361,79 +353,13 @@ Files: data/Makefile.am
        plugins/xrdb/*.mate-settings-daemon.in
        plugins/xsettings/Makefile.am
        plugins/xsettings/*.mate-settings-daemon.in
-       ChangeLog
-       NEWS
-       README
        acinclude.m4
-       config.h.in
+       autogen.sh
        configure.ac
 Copyright: *No Copyright*
 License: GPL-2+ or LGPL-2.1+
 Comment:
  License(s) assumed from COPYING and COPYING.LIB files.
-
-Files: aclocal.m4
-Copyright: 1996-2013, Free Software Foundation, Inc.
-License:
- This file is free software; the Free Software Foundation
- gives unlimited permission to copy and/or distribute it,
- with or without modifications, as long as this notice is preserved.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY, to the extent permitted by law; without
- even the implied warranty of MERCHANTABILITY or FITNESS FOR A
- PARTICULAR PURPOSE.
-
-Files: compile
-       depcomp
-       ltmain.sh
-       missing
-Copyright: 1996-2013, Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: config.guess
-       config.sub
-Copyright: 1992-2013, Free Software Foundation, Inc.
-License: GPL-3+
-
-Files: install-sh
-Copyright: 1994, X Consortium
-License: MIT-X11
-
-Files: data/Makefile.in
-       Makefile.in
-       mate-settings-daemon/Makefile.in
-       plugins/a11y-keyboard/Makefile.in
-       plugins/background/Makefile.in
-       plugins/clipboard/Makefile.in
-       plugins/common/Makefile.in
-       plugins/datetime/Makefile.in
-       plugins/dummy/Makefile.in
-       plugins/housekeeping/Makefile.in
-       plugins/keybindings/Makefile.in
-       plugins/keyboard/Makefile.in
-       plugins/Makefile.in
-       plugins/media-keys/cut-n-paste/Makefile.in
-       plugins/media-keys/Makefile.in
-       plugins/mouse/Makefile.in
-       plugins/mpris/Makefile.in
-       plugins/smartcard/Makefile.in
-       plugins/sound/Makefile.in
-       plugins/typing-break/Makefile.in
-       plugins/xrandr/Makefile.in
-       plugins/xrdb/data/Makefile.in
-       plugins/xrdb/Makefile.in
-       plugins/xsettings/Makefile.in
-Copyright: 1994-2013, Free Software Founation, Inc.
-License:
- This Makefile.in is free software; the Free Software Foundation
- gives unlimited permission to copy and/or distribute it,
- with or without modifications, as long as this notice is preserved.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY, to the extent permitted by law; without
- even the implied warranty of MERCHANTABILITY or FITNESS FOR A
- PARTICULAR PURPOSE.
 
 Files: debian/*
 Copyright: 2011-2014 Stefano Karapetsas <stefano@karapetsas.com>
@@ -526,26 +452,3 @@ License: MIT~OldStyleWithDisclaimer+RedHat
  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
  OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN 
  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-License: MIT-X11
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to
- deal in the Software without restriction, including without limitation the
- rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- sell copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
- X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
- AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNEC-
- TION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- .
- Except as contained in this notice, the name of the X Consortium shall not
- be used in advertising or otherwise to promote the sale, use or other deal-
- ings in this Software without prior written authorization from the X Consor-
- tium.
