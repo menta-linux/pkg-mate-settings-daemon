@@ -1,3 +1,9 @@
+mate-settings-daemon (1.8.0-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 11 Mar 2014 21:54:50 +0100
+
 mate-settings-daemon (1.6.1-1) unstable; urgency=low
 
   * Inital release. (Closes: #728489).
