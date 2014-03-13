@@ -1,3 +1,10 @@
+mate-settings-daemon (1.8.0-2) UNRELEASED; urgency=low
+
+  * debian/copyright:
+    + Point to git.mate-desktop.org in Source: field.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 13 Mar 2014 16:35:38 +0100
+
 mate-settings-daemon (1.8.0-1) unstable; urgency=low
 
   * New upstream release.
