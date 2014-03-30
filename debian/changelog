@@ -1,5 +1,12 @@
 mate-settings-daemon (1.8.0-2) UNRELEASED; urgency=low
 
+  * debian/control:
+    + Versioned dependency for bin:packages mate-settings-daemon-gstreamer and
+      mate-settings-daemon-pulse on mate-desktop-common (>= 1.8). (Closes:
+      #742461).
+  * debian/rules:
+    + Turn on compiler commands during package build (configure option:
+      --disable-silent-rules).
   * debian/copyright:
     + Point to git.mate-desktop.org in Source: field.
 
