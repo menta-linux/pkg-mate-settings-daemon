@@ -15,6 +15,7 @@ DEB_DH_INSTALL_ARGS += --list-missing
 
 DEB_CONFIGURE_SCRIPT := ./autogen.sh
 DEB_CONFIGURE_EXTRA_FLAGS += \
+	--disable-silent-rules \
 	--libexecdir=/usr/bin \
 	--disable-static \
 	--disable-pulse \
@@ -29,6 +30,7 @@ $(DEB_BUILDDIR_mate-settings-daemon-pulse)/config.status:
 		$(DEB_CONFIGURE_SCRIPT_ENV) $(DEB_CONFIGURE_SCRIPT) \
 			$(DEB_CONFIGURE_NORMAL_ARGS) \
 			$(cdbs_configure_flags) \
+			--disable-silent-rules \
 			--libexecdir=/usr/bin \
 			--disable-static \
 			--enable-pulse \
