@@ -1,3 +1,12 @@
+mate-settings-daemon (1.8.0-3) unstable; urgency=low
+
+  * debian/rules:
+    + Enable parallel builds.
+  * debian/copyright:
+    + Fix typo (opinion -> option).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 30 Apr 2014 16:38:33 +0200
+
 mate-settings-daemon (1.8.0-2) unstable; urgency=high
 
   * debian/changelog:
