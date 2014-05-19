@@ -25,6 +25,13 @@ DEB_CONFIGURE_EXTRA_FLAGS += \
 	--enable-polkit \
 	--with-gtk=2.0
 
+common-install-indep:: remove-cruft
+common-install-arch:: remove-cruft
+
+remove-cruft::
+	rm -fv debian/tmp/usr/lib/mate-settings-daemon/*.la
+	rm -fv debian/tmp/usr/share/MateConf/gsettings/*.convert
+
 configure/mate-settings-daemon-pulse:: $(DEB_BUILDDIR_mate-settings-daemon-pulse)/config.status
 $(DEB_BUILDDIR_mate-settings-daemon-pulse)/config.status:
 	cp -a `find . -maxdepth 1 -mindepth 1 -not -name debian` $(DEB_SRCDIR_mate-settings-daemon-pulse)/$*
