@@ -1,3 +1,18 @@
+mate-settings-daemon (1.8.1-1) unstable; urgency=low
+
+  [ Mike Gabriel ]
+  * New upstream release.
+  * debian/control: 
+    + Versioned B-D: libmate-desktop-dev (>= 1.8.1).
+  * debian/rules:
+    + Remove files after build that we do not install into any bin:package.
+
+  [ Vangelis Mouhtsis ]
+  * debian/rules:
+    + Replace on dh_install --list-missing -> --fail-missing.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 19 May 2014 08:33:41 +0200
+
 mate-settings-daemon (1.8.0-3) unstable; urgency=low
 
   * debian/rules:
