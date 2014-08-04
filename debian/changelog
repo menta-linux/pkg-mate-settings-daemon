@@ -1,3 +1,11 @@
+mate-settings-daemon (1.8.1-2) unstable; urgency=medium
+
+  * debian/control:
+    + Prefer pulse backend of MATE settings daemon to the gstreamer backend
+      on default installations. (Closes: #753588).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 04 Aug 2014 17:44:50 +0200
+
 mate-settings-daemon (1.8.1-1) unstable; urgency=low
 
   [ Mike Gabriel ]
