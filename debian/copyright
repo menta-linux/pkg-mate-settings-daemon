@@ -57,7 +57,7 @@ Files: mate-settings-daemon/main.c
        plugins/xsettings/msd-xsettings-plugin.h
 Copyright: 2005, 2007 William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: mate-settings-daemon/mate-settings-plugin-info.h
        plugins/media-keys/cut-n-paste/gvc-channel-map.h
        plugins/media-keys/cut-n-paste/gvc-mixer-card.h
@@ -76,7 +76,7 @@ Files: mate-settings-daemon/mate-settings-plugin-info.h
        plugins/xsettings/fontconfig-monitor.h
 Copyright: 2006-2010 Red Hat, Inc
 License: GPL-2+
- 
+
 Files: plugins/clipboard/list.c
        plugins/clipboard/list.h
        plugins/clipboard/xutils.c
@@ -87,7 +87,7 @@ Files: plugins/clipboard/list.c
        plugins/xsettings/xsettings-manager.h
 Copyright: 2001, 2004 Red Hat, Inc
 License: MIT~OldStyleWithDisclaimer+RedHat
- 
+
 Files: plugins/media-keys/cut-n-paste/gvc-channel-map.c
        plugins/media-keys/cut-n-paste/gvc-mixer-event-role.c
        plugins/media-keys/cut-n-paste/gvc-mixer-sink-input.c
@@ -97,7 +97,7 @@ Files: plugins/media-keys/cut-n-paste/gvc-channel-map.c
        plugins/media-keys/cut-n-paste/gvc-mixer-stream.c
 Copyright: 2008, William Jon McCann
 License: GPL-2+
- 
+
 Files: plugins/datetime/system-timezone.h
        plugins/housekeeping/msd-disk-space.c
        plugins/housekeeping/msd-disk-space.h
@@ -105,26 +105,26 @@ Files: plugins/datetime/system-timezone.h
        plugins/keyboard/delayed-dialog.h
 Copyright: 2006, 2008 Novell, Inc
 License: GPL-2+
- 
+
 Files: plugins/sound/msd-sound-manager.c
        plugins/sound/msd-sound-manager.h
        plugins/sound/msd-sound-plugin.c
        plugins/sound/msd-sound-plugin.h
 Copyright: 2008, Lennart Poettering <lennart@poettering.net>
 License: GPL-2+
- 
+
 Files: plugins/mouse/msd-locate-pointer.c
        plugins/mouse/msd-timeline.c
        plugins/mouse/msd-timeline.h
 Copyright: 2008, Carlos Garnacho <carlos@imendio.com>
 License: GPL-2+
- 
+
 Files: plugins/datetime/msd-datetime-mechanism-main.c
        plugins/datetime/msd-datetime-mechanism.c
        plugins/datetime/msd-datetime-mechanism.h
 Copyright: 2007, David Zeuthen <david@fubar.dk>
 License: GPL-2+
- 
+
 Files: plugins/housekeeping/msd-housekeeping-manager.h
        plugins/housekeeping/msd-housekeeping-plugin.c
        plugins/housekeeping/msd-housekeeping-plugin.h
@@ -136,44 +136,44 @@ Files: plugins/housekeeping/msd-ldsm-dialog.c
        plugins/housekeeping/msd-ldsm-trash-empty.h
 Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
 License: GPL-3+
- 
+
 Files: mate-settings-daemon/mate-settings-module.c
        mate-settings-daemon/mate-settings-module.h
 Copyright: 2005, Paolo Maggi
 License: GPL-2+
- 
+
 Files: mate-settings-daemon/mate-settings-plugin.c
        mate-settings-daemon/mate-settings-plugin.h
 Copyright: 2002-2005, Paolo Maggi
            2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/keybindings/dconf-util.c
        plugins/keybindings/dconf-util.h
 Copyright: 2012, Stefano Karapetsas
 License: GPL-2+
- 
+
 Files: plugins/mpris/msd-mpris-manager.c
        plugins/mpris/msd-mpris-manager.h
 Copyright: 2013, Stefano Karapetsas <stefano@karapetsas.com>
 License: GPL-2+
- 
+
 Files: plugins/keyboard/msd-keyboard-xkb.c
        plugins/keyboard/msd-keyboard-xkb.h
 Copyright: 2001, Udaltsoft
 License: GPL-2+
- 
+
 Files: plugins/a11y-keyboard/msd-a11y-preferences-dialog.c
        plugins/a11y-keyboard/msd-a11y-preferences-dialog.h
 Copyright: 2008, William Jon McCann <jmccann@redhat.com>
 License: GPL-2+
- 
+
 Files: plugins/a11y-keyboard/msd-a11y-keyboard-manager.c
        plugins/keyboard/msd-keyboard-manager.c
 Copyright: 2001, Ximian, Inc
            2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/media-keys/cut-n-paste/gvc-gstreamer-acme-vol.c
        plugins/media-keys/cut-n-paste/gvc-gstreamer-acme-vol.h
 Copyright: 2002-2003, Bastien Nocera
@@ -181,182 +181,213 @@ Copyright: 2002-2003, Bastien Nocera
            2009, PERIER Romain <mrpouet@tuxfamily.org>
            2011, Stefano Karapetsas <stefano@karapetsas.com>
 License: LGPL-2+
- 
+
 Files: plugins/common/msd-osd-window.c
        plugins/common/msd-osd-window.h
 Copyright: 2006-2007 William Jon McCann <mccann@jhu.edu>
            2009, Novell, Inc
 License: LGPL-2+
- 
+
 Files: plugins/media-keys/msd-media-keys-window.c
        plugins/media-keys/msd-media-keys-window.h
 Copyright: 2006, William Jon McCann <mccann@jhu.edu>
            2006-2007, William Jon McCann <mccann@jhu.edu>
 License: LGPL-2+
- 
-Files: ltmain.sh
-Copyright: 1996-2001, 2003-2006
-License: GPL-2+
- 
+
 Files: plugins/clipboard/msd-clipboard-manager.c
 Copyright: 2007, Anders Carlsson
            2007, Matthias Clasen
            2007, Rodrigo Moya
            2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/media-keys/cut-n-paste/gvc-mixer-card.c
 Copyright: 2008, William Jon McCann
            2009, Bastien Nocera
 License: GPL-2+
- 
+
 Files: plugins/media-keys/acme.h
 Copyright: 2001, Bastien Nocera <hadess@hadess.net>
 License: GPL-2+
- 
+
 Files: plugins/common/msd-keygrab.c
 Copyright: 2001-2003, Bastien Nocera <hadess@hadess.net>
            2006-2007, William Jon McCann <mccann@jhu.edu>
            2008, Jens Granseuer <jensgr@gmx.net>
 License: GPL-2+
- 
+
 Files: plugins/media-keys/msd-media-keys-manager.c
 Copyright: 2001-2003, Bastien Nocera <hadess@hadess.net>
            2006-2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/housekeeping/msd-housekeeping-manager.c
 Copyright: 2008, Michael J. Chudobiak <mjc@avtechpulse.com>
            2012, Jasmine Hassan <jasmine.aura@gmail.com>
 License: GPL-2+
- 
+
 Files: plugins/background/msd-background-manager.c
 Copyright: 2001, Ximian, Inc
            2007, Red Hat, Inc
            2007, William Jon McCann <mccann@jhu.edu>
            2012, Jasmine Hassan <jasmine.aura@gmail.com>
 License: GPL-2+
- 
+
 Files: plugins/common/msd-keygrab.h
 Copyright: 2008, Jens Granseuer <jensgr@gmx.net>
 License: GPL-2+
- 
+
 Files: plugins/media-keys/cut-n-paste/gvc-mixer-control.c
 Copyright: 2006-2008, Lennart Poettering
            2008, Sjoerd Simons <sjoerd@luon.net>
            2008, William Jon McCann
 License: GPL-2+
- 
+
 Files: plugins/datetime/system-timezone.c
 Copyright: 2000-2001, Ximian, Inc
            2004, Sun Microsystems, Inc
            2008, Novell, Inc
 License: GPL-2+
- 
+
 Files: plugins/smartcard/msd-smartcard.h
 Copyright: 2006, Ray Strode
 License: GPL-2+
- 
+
 Files: plugins/smartcard/msd-smartcard.c
 Copyright: 2006, Ray Strode <rstrode@redhat.com>
 License: GPL-2+
- 
+
 Files: plugins/xrandr/msd-xrandr-manager.c
 Copyright: 2007, William Jon McCann <mccann@jhu.edu>
            2007-2008, Red Hat, Inc
 License: GPL-2+
- 
+
 Files: plugins/xsettings/msd-xsettings-manager.c
 Copyright: 2007, Rodrigo Moya
            2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/xrdb/msd-xrdb-manager.c
 Copyright: 2003, Ross Burton <ross@burtonini.com>
            2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
- 
+
 Files: plugins/housekeeping/msd-ldsm-trash-empty.c
 Copyright: Chris Coulson 2009, <chrisccoulson@googlemail.com>
            Ryan Lortie 2008
 License: GPL-3+
- 
+
 Files: plugins/common/eggaccelerators.c
 Copyright: 2002, Red Hat, Inc.
            1998, 2001, Tim Janik
 License: LGPL-2+
- 
+
 Files: plugins/common/eggaccelerators.h
 Copyright: 2002, Red Hat, Inc.
 License: LGPL-2+
- 
+
 Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
 License: MIT~OldStyle+RedHat
 
-Files: data/Makefile.am
+Files: .tx/config
+       data/Makefile.am
        data/*.in.in
+       data/*.in
+       data/mate-settings-daemon.1
+       data/mate-settings-daemon.convert
        Makefile.am
        mate-settings-daemon/Makefile.am
        mate-settings-daemon/mate-settings-manager.xml
        plugins/a11y-keyboard/Makefile.am
-       plugins/a11y-keyboard/*.mate-settings-daemon.in
+       plugins/a11y-keyboard/*.mate-settings-plugin.in
        plugins/a11y-keyboard/*.ui
        plugins/background/Makefile.am
-       plugins/background/*.mate-settings-daemon.in
+       plugins/background/*.mate-settings-plugin.in
        plugins/clipboard/Makefile.am
-       plugins/clipboard/*.mate-settings-daemon.in
+       plugins/clipboard/*.mate-settings-plugin.in
        plugins/common/Makefile.am
        plugins/datetime/Makefile.am
        plugins/datetime/*.conf
+       plugins/datetime/org.mate.settingsdaemon.*.in
        plugins/datetime/org.mate.SettingsDaemon.*.in
        plugins/datetime/*.xml
        plugins/dummy/Makefile.am
-       plugins/dummy/*.mate-settings-daemon.in
+       plugins/dummy/*.mate-settings-plugin.in
        plugins/housekeeping/Makefile.am
-       plugins/housekeeping/*.mate-settings-daemon.in
+       plugins/housekeeping/*.mate-settings-plugin.in
        plugins/keybindings/Makefile.am
-       plugins/keybindings/*.mate-settings-daemon.in
+       plugins/keybindings/*.mate-settings-plugin.in
        plugins/keyboard/Makefile.am
-       plugins/keyboard/*.mate-settings-daemon.in
+       plugins/keyboard/*.mate-settings-plugin.in
        plugins/keyboard/*.png
        plugins/Makefile.am
        plugins/media-keys/cut-n-paste/Makefile.am
        plugins/media-keys/Makefile.am
        plugins/media-keys/msd-marshal.*
-       plugins/media-keys/msd-media-keys-manager-glue.h
-       plugins/media-keys/*.mate-settings-daemon.in
+       plugins/media-keys/*.mate-settings-plugin.in
        plugins/media-keys/*.list
        plugins/media-keys/*.png
        plugins/media-keys/*.svg
        plugins/media-keys/*.ui
        plugins/media-keys/*.xml
        plugins/mouse/Makefile.am
-       plugins/mouse/*.mate-settings-daemon.in
+       plugins/mouse/*.mate-settings-plugin.in
        plugins/mpris/Makefile.am
-       plugins/mpris/*.mate-settings-daemon.in
+       plugins/mpris/*.mate-settings-plugin.in
        plugins/smartcard/Makefile.am
-       plugins/smartcard/*.mate-settings-daemon.in
+       plugins/smartcard/*.mate-settings-plugin.in
        plugins/sound/Makefile.am
-       plugins/sound/*.mate-settings-daemon.in
+       plugins/sound/*.mate-settings-plugin.in
        plugins/typing-break/Makefile.am
-       plugins/typing-break/*.mate-settings-daemon.in
+       plugins/typing-break/*.mate-settings-plugin.in
        plugins/xrandr/Makefile.am
-       plugins/xrandr/*.mate-settings-daemon.in
+       plugins/xrandr/*.mate-settings-plugin.in
        plugins/xrandr/*.png
        plugins/xrandr/*.xml
        plugins/xrandr/*.svg
-       plugins/xrandr/msd-xrandr-manager-glue.h
        plugins/xrdb/data/Makefile.am
        plugins/xrdb/Makefile.am
        plugins/xrdb/data/*.ad
-       plugins/xrdb/*.mate-settings-daemon.in
+       plugins/xrdb/*.mate-settings-plugin.in
        plugins/xsettings/Makefile.am
-       plugins/xsettings/*.mate-settings-daemon.in
+       plugins/xsettings/*.mate-settings-plugin.in
+       po/ChangeLog
+       po/LINGUAS
+       po/POTFILES.in
+       po/POTFILES.skip
        acinclude.m4
        autogen.sh
        configure.ac
+       AUTHORS
+       COPYING
+       COPYING.LIB
+       ChangeLog
+       NEWS
+       README
 Copyright: *No Copyright*
+License: GPL-2+ or LGPL-2.1+
+Comment:
+ License(s) assumed from COPYING and COPYING.LIB files.
+
+Files: po/*.po
+       po/gnome-copyrights.txt
+Copyright:
+ 2003-2006, Miloslav Trmac <mitr@volny.cz>
+ 2003-2005, Sharif FarsiWeb, Inc.
+ 2004-2006, Adam Weinberger and the GNOME Foundation
+ 2004, Zuza Software Foundation
+ 2005, Canonical Ltd.
+ 2006, Lukas Novotny <lukasnov@cvs.gnome.org>.
+ 2007-2010, The Gnome Project.
+ 2007, Aleś Navicki
+ 2009, The Gnome Foundation.
+ 2010, Damyan Ivanov.
+ 1998-2010 Free Software Foundation, Inc.
+ 2005-2008, Rosetta Contributors and Canonical Ltd
+ Croatiann team
+ 2001, Roy-Magne Mo <rmo@sunnmore.net>
+ THE PACKAGE'S COPYRIGHT HOLDER
 License: GPL-2+ or LGPL-2.1+
 Comment:
  License(s) assumed from COPYING and COPYING.LIB files.
