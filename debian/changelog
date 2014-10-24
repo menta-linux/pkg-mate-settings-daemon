@@ -1,3 +1,26 @@
+mate-settings-daemon (1.8.2-1) unstable; urgency=medium
+
+  [ Vangelis Mouhtsis ]
+  * debian/control:
+    + Bump Standards: to 3.9.6. No changes needed.
+
+  [ Mike Gabriel ]
+  * New upstream release.
+  * debian/patches:
+    + Add 0001_prefer-gcalculator-for-media-keys.patch. Prefer gcalculator as
+      pocket calculator when the calculator media key is pressed.
+  * debian/rules:
+    + Use upstream's NEWS file as upstream ChangeLog.
+  * debian/control:
+    + Add Vangelis Mouhtsis to Uploaders: field.
+  * debian/copyright:
+    + Really mention all files in upstream source tree. Remove information for
+      files not shipped in upstream sources anymore.
+  * missing man pages:
+    + Add man pages for msd-datetime-mechanism and msd-locate-pointer.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 23 Oct 2014 13:49:21 +0200
+
 mate-settings-daemon (1.8.1-2) unstable; urgency=medium
 
   * debian/control:
