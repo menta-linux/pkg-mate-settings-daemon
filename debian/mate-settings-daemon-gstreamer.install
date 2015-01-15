@@ -8,5 +8,6 @@ usr/share/dbus-1/
 usr/share/glib-2.0/
 usr/share/icons/
 usr/share/mate-settings-daemon/
+usr/share/mate-control-center/
 usr/share/polkit-1/
 usr/share/man/
