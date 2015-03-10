@@ -1,3 +1,29 @@
+mate-settings-daemon (1.8.3-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+    - Including GLib >= 2.43 compatibility patch. (Closes: #778691).
+
+  * Fix accessibility key bindings for Orca and Onboard. (Closes: #775212).
+
+  [ Mike Gabriel ]
+  * debian/patches:
+    + Add README file explaining our patch naming scheme.
+  * debian/copyright:
+    + Work in license information for a11y-settings plugin.
+  * debian/mate-settings-daemon-gstreamer.install:
+    + Provide new keybindings/50-accessibility.xml to MATE Control Center.
+      (This file will also be provided in mate-settings-daemon-pulse via
+      Makefile magic and debian/rules).
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 0010_move_a11y_keybindings_to_media_keys.patch,
+          0011_add_a11y_settings_plugin.patch,
+          0012_use_gnome_a11y_schema_to_enable_applications.patch,
+          0013_monitor_gnome_schema_keys.patch.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 15 Jan 2015 13:05:52 +0100
+
 mate-settings-daemon (1.8.2-1) unstable; urgency=medium
 
   [ Vangelis Mouhtsis ]
