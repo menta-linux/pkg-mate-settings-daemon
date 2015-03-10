@@ -26,7 +26,7 @@ mate-settings-daemon (1.8.2-2) unstable; urgency=medium
   * debian/patches:
     + Add README file explaining our patch naming scheme.
     + Add 0002_fix-a11y-keyboard-dialog-segfaults.patch. Fix segfaults when
-      clicking on the checkboxes in the a11y-keybord configuration dialog.
+      clicking on the checkboxes in the a11y-keyboard configuration dialog.
       (Closes: #779916).
 
  -- Mike Gabriel <sunweaver@debian.org>  Tue, 10 Mar 2015 17:59:38 +0100
