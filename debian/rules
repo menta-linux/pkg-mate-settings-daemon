@@ -35,7 +35,6 @@ common-install-arch:: remove-cruft
 remove-cruft::
 	rm -fv debian/tmp/usr/lib/mate-settings-daemon/*.la
 	rm -fv debian/tmp/usr/share/MateConf/gsettings/*.convert
-	rm -fv debian/tmp/usr/share/mate-control-center/keybindings/50-accessibility.xml
 
 configure/mate-settings-daemon-pulse:: $(DEB_BUILDDIR_mate-settings-daemon-pulse)/config.status
 $(DEB_BUILDDIR_mate-settings-daemon-pulse)/config.status:
