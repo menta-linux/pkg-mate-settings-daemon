@@ -1,3 +1,4 @@
 0001_prefer-gcalculator-for-media-keys.patch
 0002_fix-a11y-keyboard-dialog-segfaults.patch
+1001_fix-numlock-cpu-usage.patch
 
