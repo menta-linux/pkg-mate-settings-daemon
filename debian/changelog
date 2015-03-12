@@ -1,7 +1,8 @@
-mate-settings-daemon (1.8.3-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.8.3-1) experimental; urgency=medium
 
   * New upstream release.
-    - Including GLib >= 2.43 compatibility patch. (Closes: #778691).
+    - Including GLib >= 2.43 compatibility patch. (Closes: #778691,
+      LP:#1426327).
   * Fix accessibility key bindings for Orca and Onboard. (Closes: #775212).
 
   [ Mike Gabriel ]
@@ -19,7 +20,7 @@ mate-settings-daemon (1.8.3-1) UNRELEASED; urgency=medium
           0012_use_gnome_a11y_schema_to_enable_applications.patch,
           0013_monitor_gnome_schema_keys.patch.
 
- -- Mike Gabriel <sunweaver@debian.org>  Thu, 15 Jan 2015 13:05:52 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 12 Mar 2015 04:57:38 +0100
 
 mate-settings-daemon (1.8.2-3) unstable; urgency=medium
 
