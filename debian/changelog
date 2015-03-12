@@ -21,6 +21,19 @@ mate-settings-daemon (1.8.3-1) UNRELEASED; urgency=medium
 
  -- Mike Gabriel <sunweaver@debian.org>  Thu, 15 Jan 2015 13:05:52 +0100
 
+mate-settings-daemon (1.8.2-3) unstable; urgency=medium
+
+  * debian/changelog:
+    + Fix typo in previous changelog stanza.
+  * debian/patches:
+    + Add debian/patches/1001_fix-numlock-cpu-usage.patch. Prevent m-s-d from
+      causing high CPU load if the user repetitively toggles the NUMLOCK key
+      while being connected via a remote session (NX, X2Go, VNC, xrdp, etc.)
+      or sometimes also in a local X.org session. (Closes: #780226, #778278,
+      LP:#1364111).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 10 Mar 2015 20:36:14 +0100
+
 mate-settings-daemon (1.8.2-2) unstable; urgency=medium
 
   * debian/patches:
