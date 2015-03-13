@@ -1,9 +1,9 @@
-mate-settings-daemon (1.8.3-2) UNRELEASED; urgency=medium
+mate-settings-daemon (1.8.3-2) experimental; urgency=medium
 
   * Incorporate latest changes uploaded to unstable (1.8.2-4) and
     re-upload to experimental.
 
- -- Mike Gabriel <sunweaver@debian.org>  Fri, 13 Mar 2015 14:42:32 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 13 Mar 2015 14:45:07 +0100
 
 mate-settings-daemon (1.8.3-1) experimental; urgency=medium
 
