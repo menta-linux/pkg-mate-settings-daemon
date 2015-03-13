@@ -1,3 +1,15 @@
+mate-settings-daemon (1.8.2-4) unstable; urgency=medium
+
+  * debian/changelog:
+    + Fix typo in previous changelog stanza.
+  * debian/patches:
+    + 0003_fix-unsafe-access-to-list-elements-in-background-plugin.patch.
+      Prevent mate-settings-daemon and thus MATE desktop from crashing (e.g.)
+      during screen size changes or screen configuration changes. (Closes:
+      #780399, LP:#1430204).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 13 Mar 2015 14:28:05 +0100
+
 mate-settings-daemon (1.8.2-3) unstable; urgency=medium
 
   * debian/changelog:
