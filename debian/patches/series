@@ -1,4 +1,5 @@
 0001_prefer-gcalculator-for-media-keys.patch
 0002_fix-a11y-keyboard-dialog-segfaults.patch
+0003_fix-unsafe-access-to-list-elements-in-background-plugin.patch
 1001_fix-numlock-cpu-usage.patch
 
