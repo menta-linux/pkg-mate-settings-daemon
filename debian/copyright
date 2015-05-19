@@ -13,6 +13,10 @@ Files: mate-settings-daemon/main.c
        plugins/a11y-keyboard/msd-a11y-keyboard-plugin.c
        plugins/a11y-keyboard/msd-a11y-keyboard-plugin.h
        plugins/a11y-keyboard/test-a11y-preferences-dialog.c
+       plugins/a11y-settings/msd-a11y-settings-manager.c
+       plugins/a11y-settings/msd-a11y-settings-manager.h
+       plugins/a11y-settings/msd-a11y-settings-plugin.c
+       plugins/a11y-settings/msd-a11y-settings-plugin.h
        plugins/background/msd-background-manager.h
        plugins/background/msd-background-plugin.c
        plugins/background/msd-background-plugin.h
@@ -56,6 +60,7 @@ Files: mate-settings-daemon/main.c
        plugins/xsettings/msd-xsettings-plugin.c
        plugins/xsettings/msd-xsettings-plugin.h
 Copyright: 2005, 2007 William Jon McCann <mccann@jhu.edu>
+           2007, William Jon McCann <mccann@jhu.edu>
 License: GPL-2+
 
 Files: mate-settings-daemon/mate-settings-plugin-info.h
@@ -290,6 +295,12 @@ Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
 License: MIT~OldStyle+RedHat
 
+Files: plugins/a11y-settings/a11y-settings.mate-settings-plugin.in
+Copyright: 2011, Red Hat, Inc.
+License: GPL-2+
+Comment:
+ License assumed from COPYING file.
+
 Files: .tx/config
        data/Makefile.am
        data/*.in.in
@@ -302,6 +313,7 @@ Files: .tx/config
        plugins/a11y-keyboard/Makefile.am
        plugins/a11y-keyboard/*.mate-settings-plugin.in
        plugins/a11y-keyboard/*.ui
+       plugins/a11y-settings/Makefile.am
        plugins/background/Makefile.am
        plugins/background/*.mate-settings-plugin.in
        plugins/clipboard/Makefile.am

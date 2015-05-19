@@ -1,3 +1,34 @@
+mate-settings-daemon (1.8.3-2) experimental; urgency=medium
+
+  * Incorporate latest changes uploaded to unstable (1.8.2-4) and
+    re-upload to experimental.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 13 Mar 2015 14:45:07 +0100
+
+mate-settings-daemon (1.8.3-1) experimental; urgency=medium
+
+  * New upstream release.
+    - Including GLib >= 2.43 compatibility patch. (Closes: #778691,
+      LP:#1426327).
+  * Fix accessibility key bindings for Orca and Onboard. (Closes: #775212).
+
+  [ Mike Gabriel ]
+  * debian/copyright:
+    + Work in license information for a11y-settings plugin.
+  * debian/mate-settings-daemon-gstreamer.install:
+    + Provide new keybindings/50-accessibility.xml to MATE Control Center.
+      (This file will also be provided in mate-settings-daemon-pulse via
+      Makefile magic and debian/rules).
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 0010_move_a11y_keybindings_to_media_keys.patch,
+          0011_add_a11y_settings_plugin.patch,
+          0012_use_gnome_a11y_schema_to_enable_applications.patch,
+          0013_monitor_gnome_schema_keys.patch.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 12 Mar 2015 04:57:38 +0100
+
 mate-settings-daemon (1.8.2-4) unstable; urgency=medium
 
   * debian/changelog:
@@ -25,7 +56,6 @@ mate-settings-daemon (1.8.2-3) unstable; urgency=medium
 
 mate-settings-daemon (1.8.2-2) unstable; urgency=medium
 
-  [ Mike Gabriel ]
   * debian/patches:
     + Add README file explaining our patch naming scheme.
     + Add 0002_fix-a11y-keyboard-dialog-segfaults.patch. Fix segfaults when
