@@ -1,3 +1,9 @@
+mate-settings-daemon (1.8.3-3) unstable; urgency=medium
+
+  * Re-upload to unstable. (Closes: #785506).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 19 May 2015 16:57:06 +0200
+
 mate-settings-daemon (1.8.3-2) experimental; urgency=medium
 
   * Incorporate latest changes uploaded to unstable (1.8.2-4) and
