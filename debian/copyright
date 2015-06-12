@@ -215,6 +215,11 @@ Files: plugins/media-keys/acme.h
 Copyright: 2001, Bastien Nocera <hadess@hadess.net>
 License: GPL-2+
 
+Files: plugins/common/msd-input-helper.c
+       plugins/common/msd-input-helper.h
+Copyright: 2010, Bastien Nocera <hadess@hadess.net>
+License: GPL-2+
+
 Files: plugins/common/msd-keygrab.c
 Copyright: 2001-2003, Bastien Nocera <hadess@hadess.net>
            2006-2007, William Jon McCann <mccann@jhu.edu>
