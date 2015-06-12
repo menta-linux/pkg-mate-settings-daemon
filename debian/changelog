@@ -1,3 +1,40 @@
+mate-settings-daemon (1.10.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    + Update to support libmatemedia transition.
+    + Remove unused-build-dependency-on-cdbs.
+  * debian/copyright:
+    + Update for new upstream release.
+  * debian/mate-settings-daemon-common.install:
+    + Update to support libmatemedia transition.
+  * debian/mate-settings-daemon-dev.install:
+    + Add development files.
+  * debian/mate-settings-daemon-gstreamer.*:
+    + Remove obsolete install files.
+  * debian/mate-settings-daemon-pulse.*:
+    + Remove obsolete install files.
+  * debian/mate-settings-daemon.install:
+    + Add to support libmatemedia transition.
+  * debian/patches:
+    + Drop 0001_prefer-gcalculator-for-media-keys.patch. Applied
+    upstream.
+    + Drop 0002_fix-a11y-keyboard-dialog-segfaults.patch. Applied
+    upsteam.
+    + Drop 0003_fix-unsafe-access-to-list-elements-in-background-plugin.patch.
+    Applied upstream.
+    + Drop 0010_move_a11y_keybindings_to_media_keys.patch. Applied
+    upstream.
+    + Drop 0011_add_a11y_settings_plugin.patch. Applied upstream.
+    + Drop 0012_use_gnome_a11y_schema_to_enable_applications.patch.
+    Applied upstream.
+    + Drop 0013_monitor_gnome_schema_keys.patch. Applied upstream.
+    + Drop 1001_fix-numlock-cpu-usage.patch. Applied upstream.
+  * debian/rules:
+    + Update to support libmatemedia transition.
+
+ -- Martin Wimpress <code@flexion.org>  Thu, 11 Jun 2015 01:27:06 +0100
+
 mate-settings-daemon (1.8.3-3) unstable; urgency=medium
 
   * Re-upload to unstable. (Closes: #785506).
