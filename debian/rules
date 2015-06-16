@@ -21,6 +21,8 @@ override_dh_auto_configure:
 		--enable-polkit \
 		--with-gtk=2.0
 
+override_dh_makeshlibs:
+
 override_dh_strip:
 	dh_strip --dbg-package=mate-settings-daemon-dbg
 
