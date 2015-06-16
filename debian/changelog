@@ -1,5 +1,6 @@
-mate-settings-daemon (1.10.0-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.10.0-1~exp1) experimental; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
   * debian/control:
     + Update to support libmatemedia transition.
@@ -18,22 +19,36 @@ mate-settings-daemon (1.10.0-1) UNRELEASED; urgency=medium
     + Add to support libmatemedia transition.
   * debian/patches:
     + Drop 0001_prefer-gcalculator-for-media-keys.patch. Applied
-    upstream.
+      upstream.
     + Drop 0002_fix-a11y-keyboard-dialog-segfaults.patch. Applied
-    upsteam.
+      upsteam.
     + Drop 0003_fix-unsafe-access-to-list-elements-in-background-plugin.patch.
-    Applied upstream.
+      Applied upstream.
     + Drop 0010_move_a11y_keybindings_to_media_keys.patch. Applied
-    upstream.
+      upstream.
     + Drop 0011_add_a11y_settings_plugin.patch. Applied upstream.
     + Drop 0012_use_gnome_a11y_schema_to_enable_applications.patch.
-    Applied upstream.
+      Applied upstream.
     + Drop 0013_monitor_gnome_schema_keys.patch. Applied upstream.
     + Drop 1001_fix-numlock-cpu-usage.patch. Applied upstream.
   * debian/rules:
-    + Update to support libmatemedia transition.
+    + Switch from CDBS to pure debhelper.
+    + Update to support libmatemixer transition.
+  * Processed with wrap-and-sort.
 
- -- Martin Wimpress <code@flexion.org>  Thu, 11 Jun 2015 01:27:06 +0100
+  [ Mike Gabriel ]
+  * debian/control:
+    + Versioned D: mate-common (>= 1.10).
+  * debian/copyright:
+    + Files in plugins/media-keys/cut-n-paste/ have been removed from this
+      upstream release.
+  * debian/msd-locate-pointer.1:
+    + Typo fix.
+  * debian/rules:
+    + Don't run dh_makeshlibs to avoid discovering our private libraries
+      and triggering Debian bug #204975.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 16 Jun 2015 05:55:20 +0200
 
 mate-settings-daemon (1.8.3-3) unstable; urgency=medium
 
