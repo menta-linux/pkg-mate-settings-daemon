@@ -1,0 +1,20 @@
+Description: Typo fix in debug message
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Forwarded: https://github.com/mate-desktop/mate-settings-daemon/issues/107
+
+--- a/plugins/smartcard/msd-smartcard-manager.c
++++ b/plugins/smartcard/msd-smartcard-manager.c
+@@ -604,11 +604,11 @@
+                 goto out;
+         }
+ 
+-        g_debug ("NSS database sucessfully loaded");
++        g_debug ("NSS database successfully loaded");
+         return TRUE;
+ 
+ out:
+-        g_debug ("NSS database couldn't be sucessfully loaded");
++        g_debug ("NSS database couldn't be successfully loaded");
+         return FALSE;
+ }
+ 
