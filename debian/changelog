@@ -1,3 +1,15 @@
+mate-settings-daemon (1.10.1-1~exp1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches:
+    + Drop 1001_typo-fix-in-smartcard-manager.patch. Applied upstream.
+  * debian/copyright:
+    + Mention two new man pages.
+  * debian/*.{1,manpages}:
+    + Drop our man pages for msd-locate-pointer and msd-datetime-mechanism.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 17 Jul 2015 15:31:16 +0200
+
 mate-settings-daemon (1.10.0-1~exp1) experimental; urgency=medium
 
   [ Martin Wimpress ]
