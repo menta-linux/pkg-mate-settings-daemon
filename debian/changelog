@@ -1,3 +1,10 @@
+mate-settings-daemon (1.10.1-1~exp2) UNRELEASED; urgency=medium
+
+  * debian/rules:
+    + Remove obsolete build options.
+
+ -- Martin Wimpress <code@flexion.org>  Wed, 29 Jul 2015 17:07:43 +0100
+
 mate-settings-daemon (1.10.1-1~exp1) experimental; urgency=medium
 
   * New upstream release.
