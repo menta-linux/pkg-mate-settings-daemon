@@ -18,7 +18,6 @@ override_dh_auto_configure:
 		--libexecdir=/usr/bin \
 		--disable-static \
 		--enable-pulse \
-		--enable-polkit \
 		--with-gtk=2.0
 
 override_dh_makeshlibs:
