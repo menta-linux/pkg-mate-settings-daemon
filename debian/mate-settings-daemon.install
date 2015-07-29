@@ -2,5 +2,4 @@ etc/
 usr/bin/
 usr/lib/*/mate-settings-daemon/
 usr/share/dbus-1/
-usr/share/man/
 usr/share/polkit-1/
