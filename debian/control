@@ -90,7 +90,7 @@ Description: daemon handling the MATE session settings (common files)
  It also sets various application settings through X resources and
  freedesktop.org XSETTINGS.
  .
- This package contains the architecture independent files.
+ This package contains the architecture-independent files.
 
 Package: mate-settings-daemon-dev
 Section: devel
