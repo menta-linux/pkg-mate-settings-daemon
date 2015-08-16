@@ -1,9 +1,14 @@
-mate-settings-daemon (1.10.1-1~exp2) UNRELEASED; urgency=medium
+mate-settings-daemon (1.10.1-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * debian/rules:
     + Remove obsolete build options.
 
- -- Martin Wimpress <code@flexion.org>  Wed, 29 Jul 2015 17:07:43 +0100
+  [ John Paul Adrian Glaubitz ]
+  * Fix minor typo in debian/control (missing hyphen).
+  * Upload to unstable.
+
+ -- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>  Sun, 16 Aug 2015 16:35:32 +0200
 
 mate-settings-daemon (1.10.1-1~exp1) experimental; urgency=medium
 
