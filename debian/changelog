@@ -1,3 +1,85 @@
+mate-settings-daemon (1.10.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Wimpress <code@flexion.org>  Tue, 01 Sep 2015 12:23:47 +0100
+
+mate-settings-daemon (1.10.1-1) unstable; urgency=medium
+
+  [ Martin Wimpress ]
+  * debian/rules:
+    + Remove obsolete build options.
+
+  [ John Paul Adrian Glaubitz ]
+  * Fix minor typo in debian/control (missing hyphen).
+  * Upload to unstable.
+
+ -- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>  Sun, 16 Aug 2015 16:35:32 +0200
+
+mate-settings-daemon (1.10.1-1~exp1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches:
+    + Drop 1001_typo-fix-in-smartcard-manager.patch. Applied upstream.
+  * debian/copyright:
+    + Mention two new man pages.
+  * debian/*.{1,manpages}:
+    + Drop our man pages for msd-locate-pointer and msd-datetime-mechanism.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 17 Jul 2015 15:31:16 +0200
+
+mate-settings-daemon (1.10.0-1~exp1) experimental; urgency=medium
+
+  [ Martin Wimpress ]
+  * New upstream release.
+  * debian/control:
+    + Update to support libmatemedia transition.
+    + Remove unused-build-dependency-on-cdbs.
+  * debian/copyright:
+    + Update for new upstream release.
+  * debian/mate-settings-daemon-common.install:
+    + Update to support libmatemedia transition.
+  * debian/mate-settings-daemon-dev.install:
+    + Add development files.
+  * debian/mate-settings-daemon-gstreamer.*:
+    + Remove obsolete install files.
+  * debian/mate-settings-daemon-pulse.*:
+    + Remove obsolete install files.
+  * debian/mate-settings-daemon.install:
+    + Add to support libmatemedia transition.
+  * debian/patches:
+    + Drop 0001_prefer-gcalculator-for-media-keys.patch. Applied
+      upstream.
+    + Drop 0002_fix-a11y-keyboard-dialog-segfaults.patch. Applied
+      upsteam.
+    + Drop 0003_fix-unsafe-access-to-list-elements-in-background-plugin.patch.
+      Applied upstream.
+    + Drop 0010_move_a11y_keybindings_to_media_keys.patch. Applied
+      upstream.
+    + Drop 0011_add_a11y_settings_plugin.patch. Applied upstream.
+    + Drop 0012_use_gnome_a11y_schema_to_enable_applications.patch.
+      Applied upstream.
+    + Drop 0013_monitor_gnome_schema_keys.patch. Applied upstream.
+    + Drop 1001_fix-numlock-cpu-usage.patch. Applied upstream.
+  * debian/rules:
+    + Switch from CDBS to pure debhelper.
+    + Update to support libmatemixer transition.
+  * Processed with wrap-and-sort.
+
+  [ Mike Gabriel ]
+  * debian/control:
+    + Versioned D: mate-common (>= 1.10).
+  * debian/copyright:
+    + Files in plugins/media-keys/cut-n-paste/ have been removed from this
+      upstream release.
+  * debian/msd-locate-pointer.1:
+    + Typo fix.
+  * debian/rules:
+    + Don't run dh_makeshlibs to avoid discovering our private libraries
+      and triggering Debian bug #204975.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 16 Jun 2015 05:55:20 +0200
+
 mate-settings-daemon (1.8.3-3) unstable; urgency=medium
 
   * Re-upload to unstable. (Closes: #785506).
