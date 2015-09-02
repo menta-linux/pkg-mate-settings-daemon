@@ -1,8 +1,9 @@
-mate-settings-daemon (1.10.2-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.10.2-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
 
- -- Martin Wimpress <code@flexion.org>  Tue, 01 Sep 2015 12:23:47 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 02 Sep 2015 04:50:47 +0200
 
 mate-settings-daemon (1.10.1-1) unstable; urgency=medium
 
