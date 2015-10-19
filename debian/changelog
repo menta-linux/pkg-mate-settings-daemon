@@ -1,3 +1,10 @@
+mate-settings-daemon (1.10.2-2) unstable; urgency=medium
+
+  * Re-Upload to unstable after some manual package decruft in
+    the Debian archive (mate-media bug #800950 for similar issue).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 19 Oct 2015 14:13:33 +0200
+
 mate-settings-daemon (1.10.2-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
