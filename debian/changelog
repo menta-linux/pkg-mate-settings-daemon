@@ -1,8 +1,13 @@
-mate-settings-daemon (1.12.1-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.12.1-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
+  * debian/control:
+    + Versioned B-D: mate-common (>= 1.12), libmate-desktop-dev (>= 1.12),
+      libmatekbd-dev (>= 1.12) and libmatemixer-dev (>= 1.12).
+    + Drop obsolete B-D: libmatepolkit-dev.
 
- -- Martin Wimpress <code@flexion.org>  Mon, 09 Nov 2015 19:07:52 +0000
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 21 Dec 2015 14:19:18 +0100
 
 mate-settings-daemon (1.10.2-2) unstable; urgency=medium
 
