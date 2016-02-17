@@ -36,8 +36,8 @@ Build-Depends: autotools-dev,
                x11proto-kb-dev,
 Standards-Version: 3.9.6
 Homepage: http://www.mate-desktop.org/
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-mate/mate-settings-daemon.git;a=summary
-Vcs-Git: git://anonscm.debian.org/pkg-mate/mate-settings-daemon.git
+Vcs-Browser: https://anonscm.debian.org/git/pkg-mate/mate-settings-daemon.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-mate/mate-settings-daemon.git
 
 Package: mate-settings-daemon
 Architecture: any
