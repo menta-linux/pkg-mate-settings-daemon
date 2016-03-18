@@ -1,3 +1,6 @@
+Description: Add cursor theme and size to xsettings (ported from gnome-settings-daemon).
+Author: Sorokin Alexei <sor.alexei@meowr.ru>
+
 diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
 index 635040a..06b5399 100644
 --- a/plugins/xsettings/msd-xsettings-manager.c
