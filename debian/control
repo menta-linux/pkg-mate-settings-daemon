@@ -41,7 +41,7 @@ Vcs-Git: https://anonscm.debian.org/git/pkg-mate/mate-settings-daemon.git
 
 Package: mate-settings-daemon
 Architecture: any
-Depends: mate-desktop-common (>= 1.12),
+Depends: mate-desktop-common (>= 1.14),
          mate-polkit | policykit-1-gnome,
          mate-settings-daemon-common (= ${source:Version}),
          x11-xserver-utils,
