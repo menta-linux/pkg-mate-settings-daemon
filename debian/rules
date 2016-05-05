@@ -11,7 +11,6 @@ include /usr/share/dpkg/buildflags.mk
 
 override_dh_install:
 	rm -rf debian/tmp/usr/lib/*/mate-settings-daemon/*.la
-	rm -rf debian/tmp/usr/share/MateConf/gsettings/*.convert
 	dh_install --fail-missing
 
 override_dh_auto_configure:
