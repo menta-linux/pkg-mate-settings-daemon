@@ -26,7 +26,7 @@ override_dh_auto_configure:
 override_dh_makeshlibs:
 
 override_dh_strip:
-	dh_strip --dbg-package=mate-settings-daemon-dbg
+	dh_strip --dbgsym-migration='mate-settings-daemon-dbg (<< 1.14.0-2~)'
 
 get-orig-source:
 	uscan --noconf --force-download --rename --download-current-version --destdir=..
