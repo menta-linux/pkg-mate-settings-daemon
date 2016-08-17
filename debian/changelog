@@ -1,3 +1,9 @@
+mate-settings-daemon (1.14.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Wimpress <code@flexion.org>  Wed, 17 Aug 2016 14:35:30 +0100
+
 mate-settings-daemon (1.14.0-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
