@@ -1,8 +1,14 @@
-mate-settings-daemon (1.14.1-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.14.1-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
 
- -- Martin Wimpress <code@flexion.org>  Wed, 17 Aug 2016 14:35:30 +0100
+  [ Vangelis Mouhtsis ]
+  * debian/{control,rules}:
+    + dbgsym: Don't build dbg:packages anymore.
+      See https://wiki.debian.org/AutomaticDebugPackages.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 22 Aug 2016 11:10:47 +0200
 
 mate-settings-daemon (1.14.0-1) unstable; urgency=medium
 
