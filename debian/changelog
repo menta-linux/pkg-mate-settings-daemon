@@ -1,12 +1,19 @@
-mate-settings-daemon (1.16.0-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.16.0-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release. (Closes: #837635).
+
+  [ Vangelis Mouhtsis ]
   * debian/control:
     + Dependencies updated for MATE 1.16.
   * debian/watch:
-    + Update version matching to _not_ support developent releases.
+    + Update version matching again to _not_ support developent releases.
 
- -- Martin Wimpress <code@flexion.org>  Fri, 23 Sep 2016 10:46:46 +0100
+  [ Mike Gabriel ]
+  * debian/changelog:
+    + Fix missing changelog items for 1.15.1-0ubuntu1 upload.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sat, 01 Oct 2016 17:17:39 +0200
 
 mate-settings-daemon (1.15.1-0ubuntu1) yakkety; urgency=medium
 
