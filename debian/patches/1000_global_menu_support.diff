@@ -1,0 +1,13 @@
+diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
+index 5e2e585..445be61 100644
+--- a/plugins/xsettings/msd-xsettings-manager.c
++++ b/plugins/xsettings/msd-xsettings-manager.c
+@@ -198,6 +198,8 @@ static TranslationEntry translations [] = {
+         { INTERFACE_SCHEMA, "icon-theme",             "Net/IconThemeName",             translate_string_string },
+         { INTERFACE_SCHEMA, "file-chooser-backend",   "Gtk/FileChooserBackend",        translate_string_string },
+         { INTERFACE_SCHEMA, "gtk-decoration-layout",  "Gtk/DecorationLayout",          translate_string_string },
++        { INTERFACE_SCHEMA, "gtk-shell-shows-app-menu","Gtk/ShellShowsAppMenu",        translate_bool_int },
++        { INTERFACE_SCHEMA, "gtk-shell-shows-menubar","Gtk/ShellShowsMenubar",         translate_bool_int },
+         { INTERFACE_SCHEMA, "menus-have-icons",       "Gtk/MenuImages",                translate_bool_int },
+         { INTERFACE_SCHEMA, "buttons-have-icons",     "Gtk/ButtonImages",              translate_bool_int },
+         { INTERFACE_SCHEMA, "menubar-accel",          "Gtk/MenuBarAccel",              translate_string_string },
