@@ -1,3 +1,11 @@
+Description: Add interfaces to support Global Menu. (LP: #1675956)
+Author: Martin Wimpress <martin@ubuntu-mate.org>
+Abstract:
+ These interfaces were accidently not included in the
+ mate-settings-daemon 1.18.0 release. This patch adds them so Global
+ Menu integration can be supported.
+
+
 diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
 index 5e2e585..445be61 100644
 --- a/plugins/xsettings/msd-xsettings-manager.c
