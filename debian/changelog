@@ -17,6 +17,8 @@ mate-settings-daemon (1.18.1-1) UNRELEASED; urgency=medium
     + Bump debhelper version to (>= 10.3~).
   * debian/rules:
     + Add new block for override_dh_missing.
+  * debian/control:
+    + Bump Standards-Version: to 4.0.0. No changes needed.
 
  -- Vangelis Mouhtsis <vangelis@gnugr.org>  Mon, 03 Jul 2017 10:31:39 +0300
 
