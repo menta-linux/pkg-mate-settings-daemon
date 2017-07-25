@@ -1,4 +1,4 @@
-mate-settings-daemon (1.18.1-1) unstable; urgency=medium
+mate-settings-daemon (1.18.1-1) UNRELEASED; urgency=medium
 
   [ Aron Xu ]
   * New upstream release.
@@ -20,7 +20,7 @@ mate-settings-daemon (1.18.1-1) unstable; urgency=medium
   * debian/control:
     + Bump Standards-Version: to 4.0.0. No changes needed.
 
- -- Mike Gabriel <sunweaver@debian.org>  Mon, 24 Jul 2017 16:24:05 +0200
+ -- Vangelis Mouhtsis <vangelis@gnugr.org>  Mon, 03 Jul 2017 10:31:39 +0300
 
 mate-settings-daemon (1.16.2-1) unstable; urgency=medium
 
