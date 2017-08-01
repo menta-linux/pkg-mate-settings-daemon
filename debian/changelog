@@ -1,3 +1,14 @@
+mate-settings-daemon (1.18.1-2) unstable; urgency=medium
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 1001_request_keyboard_event_from_global_keybindings.diff. This
+      allows mate-settings-daemon to honor global keybindings whenever a
+      different application has keybindings that seem conflicting, but are
+      usually not.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 01 Aug 2017 14:04:11 -0400
+
 mate-settings-daemon (1.18.1-1) unstable; urgency=medium
 
   [ Aron Xu ]
