@@ -1,3 +1,9 @@
+mate-settings-daemon (1.18.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Wimpress <martin.wimpress@ubuntu.com>  Thu, 26 Oct 2017 19:52:08 +0100
+
 mate-settings-daemon (1.18.1-4) unstable; urgency=medium
 
   * debian/control:
