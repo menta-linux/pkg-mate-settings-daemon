@@ -1,8 +1,13 @@
-mate-settings-daemon (1.18.2-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.18.2-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
+  * debian/patches:
+    + Drop 1002_fix-randr-applet-dying-on-restart.patch. Applied upstream.
+    + Drop 1001_request_keyboard_event_from_global_keybindings.diff. Applied
+      upstream.
 
- -- Martin Wimpress <martin.wimpress@ubuntu.com>  Thu, 26 Oct 2017 19:52:08 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 02 Nov 2017 09:37:37 +0100
 
 mate-settings-daemon (1.18.1-4) unstable; urgency=medium
 
