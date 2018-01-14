@@ -33,7 +33,7 @@ Build-Depends: autotools-dev,
                libxt-dev,
                mate-common (>= 1.18),
                x11proto-kb-dev,
-Standards-Version: 4.1.1
+Standards-Version: 4.1.3
 Homepage: http://www.mate-desktop.org/
 Vcs-Browser: https://anonscm.debian.org/git/pkg-mate/mate-settings-daemon.git
 Vcs-Git: https://anonscm.debian.org/git/pkg-mate/mate-settings-daemon.git
