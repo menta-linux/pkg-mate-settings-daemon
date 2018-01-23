@@ -269,6 +269,7 @@ Comment:
  License assumed from COPYING file.
 
 Files: .tx/config
+       .github/issue_template.md
        data/Makefile.am
        data/*.in.in
        data/*.in
