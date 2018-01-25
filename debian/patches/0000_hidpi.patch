@@ -29,10 +29,30 @@ index 165d5b0..185b8c9 100644
                  /* Huh!?  No screen? */
                  dpi = DPI_DEFAULT;
 diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
-index a9635a8..ef14c78 100644
+index a9635a8..a84fb82 100644
 --- a/plugins/xsettings/msd-xsettings-manager.c
 +++ b/plugins/xsettings/msd-xsettings-manager.c
-@@ -302,24 +302,28 @@ xft_settings_get (MateXSettingsManager *manager,
+@@ -233,6 +233,7 @@ get_dpi_from_x_server (void)
+ {
+         GdkScreen *screen;
+         double     dpi;
++        gint       scale;
+ 
+         screen = gdk_screen_get_default ();
+         if (screen != NULL) {
+@@ -255,6 +256,11 @@ get_dpi_from_x_server (void)
+                 dpi = DPI_FALLBACK;
+         }
+ 
++
++        scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
++        if (scale)
++                dpi = dpi * scale;
++
+         return dpi;
+ }
+ 
+@@ -302,24 +308,28 @@ xft_settings_get (MateXSettingsManager *manager,
                    MateXftSettings *settings)
  {
          GSettings *mouse_gsettings;
@@ -41,7 +61,7 @@ index a9635a8..ef14c78 100644
          char      *hinting;
          char      *rgba_order;
          double     dpi;
-+        int        scale;
++        gint       scale;
  
          mouse_gsettings = g_hash_table_lookup (manager->priv->gsettings, MOUSE_SCHEMA);
 +        screen = gdk_screen_get_default();
@@ -55,8 +75,7 @@ index a9635a8..ef14c78 100644
          settings->antialias = TRUE;
          settings->hinting = TRUE;
          settings->hintstyle = "hintslight";
--        settings->dpi = dpi * 1024; /* Xft wants 1/1024ths of an inch */
-+        settings->dpi = dpi * scale * 1024; /* Xft wants 1/1024ths of an inch */
+         settings->dpi = dpi * 1024; /* Xft wants 1/1024ths of an inch */
          settings->cursor_theme = g_settings_get_string (mouse_gsettings, CURSOR_THEME_KEY);
 -        settings->cursor_size = g_settings_get_int (mouse_gsettings, CURSOR_SIZE_KEY);
 +        settings->cursor_size = scale * g_settings_get_int (mouse_gsettings, CURSOR_SIZE_KEY);
