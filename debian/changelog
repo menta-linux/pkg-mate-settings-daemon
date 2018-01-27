@@ -1,3 +1,9 @@
+mate-settings-daemon (1.19.2-0ubuntu2) bionic; urgency=medium
+
+  * New maintainer upload.
+
+ -- Martin Wimpress <martin.wimpress@ubuntu.com>  Thu, 25 Jan 2018 23:27:52 +0000
+
 mate-settings-daemon (1.19.2-0ubuntu1) bionic; urgency=medium
 
   * New upstream release.
