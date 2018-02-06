@@ -1,6 +1,15 @@
+mate-settings-daemon (1.19.2-0ubuntu3) bionic; urgency=medium
+
+  * debian/patches:
+    + Add 0001_hidpi.patch. HiDPI configuration in XSettings.
+
+ -- Martin Wimpress <martin.wimpress@ubuntu.com>  Tue, 06 Feb 2018 14:47:59 +0000
+
 mate-settings-daemon (1.19.2-0ubuntu2) bionic; urgency=medium
 
-  * New maintainer upload.
+  * debian/patches:
+    + Update 0000_hidpi.patch. Fix where DPI is getting scaled and remove ceil
+      for scaled DPI.
 
  -- Martin Wimpress <martin.wimpress@ubuntu.com>  Thu, 25 Jan 2018 23:27:52 +0000
 
