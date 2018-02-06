@@ -1,0 +1,754 @@
+Author: Victor Kareh <vkareh@vkareh.net>
+Description: Add HiDPI configuration in XSettings
+
+diff --git a/configure.ac b/configure.ac
+index 753a56f..2b84e0d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -486,6 +486,7 @@ data/org.mate.SettingsDaemon.plugins.typing-break.gschema.xml
+ data/org.mate.SettingsDaemon.plugins.xrandr.gschema.xml
+ data/org.mate.SettingsDaemon.plugins.xrdb.gschema.xml
+ data/org.mate.SettingsDaemon.plugins.xsettings.gschema.xml
++data/org.mate.SettingsDaemon.plugins.gschema.xml
+ po/Makefile.in
+ ])
+ 
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 8655e3f..34cf52e 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -22,6 +22,7 @@ msd_gschemas_in = \
+ 	org.mate.SettingsDaemon.plugins.xrandr.gschema.xml.in \
+ 	org.mate.SettingsDaemon.plugins.xrdb.gschema.xml.in \
+ 	org.mate.SettingsDaemon.plugins.xsettings.gschema.xml.in \
++	org.mate.SettingsDaemon.plugins.gschema.xml.in \
+ 	$(NULL)
+ 
+ @INTLTOOL_XML_NOMERGE_RULE@
+diff --git a/data/org.mate.SettingsDaemon.plugins.gschema.xml.in b/data/org.mate.SettingsDaemon.plugins.gschema.xml.in
+new file mode 100644
+index 0000000..d406525
+--- /dev/null
++++ b/data/org.mate.SettingsDaemon.plugins.gschema.xml.in
+@@ -0,0 +1,9 @@
++<schemalist>
++  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.mate.SettingsDaemon.plugins" path="/org/mate/settings-daemon/plugins/">
++    <key name="init-load-priority" type="i">
++      <default>2</default>
++      <summary>Load priority for Initialization phase</summary>
++      <description>Priority to use as the cut-off for loading plugins during the session initialization phase. Plugins that are this number or lower, will be loaded before mate-settings-daemon registers itself as an initialized application. This is useful for plugins that need the set environment variables, or change settings before the window manager, panel, or desktop has started loading. Values higher than this number will be deferred to be loaded asynchronously.</description>
++    </key>
++  </schema>
++</schemalist>
+diff --git a/mate-settings-daemon/main.c b/mate-settings-daemon/main.c
+index da87c36..b070361 100644
+--- a/mate-settings-daemon/main.c
++++ b/mate-settings-daemon/main.c
+@@ -519,13 +519,24 @@ main (int argc, char *argv[])
+                 goto out;
+         }
+ 
++        /* If we aren't started by dbus then load the plugins automatically during the
++         * Initialization phase. Otherwise, wait for an Awake etc. */
++        if (g_getenv ("DBUS_STARTER_BUS_TYPE") == NULL) {
++                error = NULL;
++                res = mate_settings_manager_start (manager, PLUGIN_LOAD_INIT, &error);
++                if (! res) {
++                        g_warning ("Unable to start: %s", error->message);
++                        g_error_free (error);
++                }
++        }
++
+         set_session_over_handler (bus, manager);
+ 
+-        /* If we aren't started by dbus then load the plugins
+-           automatically.  Otherwise, wait for an Awake etc. */
++        /* If we aren't started by dbus then load the plugins automatically after
++         * mate-settings-daemon has registered itself. Otherwise, wait for an Awake etc. */
+         if (g_getenv ("DBUS_STARTER_BUS_TYPE") == NULL) {
+                 error = NULL;
+-                res = mate_settings_manager_start (manager, &error);
++                res = mate_settings_manager_start (manager, PLUGIN_LOAD_DEFER, &error);
+                 if (! res) {
+                         g_warning ("Unable to start: %s", error->message);
+                         g_error_free (error);
+diff --git a/mate-settings-daemon/mate-settings-manager.c b/mate-settings-daemon/mate-settings-manager.c
+index b076951..4936c84 100644
+--- a/mate-settings-daemon/mate-settings-manager.c
++++ b/mate-settings-daemon/mate-settings-manager.c
+@@ -50,6 +50,8 @@ struct MateSettingsManagerPrivate
+ {
+         DBusGConnection            *connection;
+         GSList                     *plugins;
++        gint                        init_load_priority;
++        gint                        load_init_flag;
+ };
+ 
+ enum {
+@@ -80,15 +82,25 @@ mate_settings_manager_error_quark (void)
+ }
+ 
+ static void
+-maybe_activate_plugin (MateSettingsPluginInfo *info, gpointer user_data)
++maybe_activate_plugin (MateSettingsPluginInfo *info,
++                       MateSettingsManager    *manager)
+ {
+         if (mate_settings_plugin_info_get_enabled (info)) {
+-                gboolean res;
+-                res = mate_settings_plugin_info_activate (info);
+-                if (res) {
+-                        g_debug ("Plugin %s: active", mate_settings_plugin_info_get_location (info));
++                int plugin_priority;
++                plugin_priority = mate_settings_plugin_info_get_priority (info);
++
++                if (manager->priv->load_init_flag == PLUGIN_LOAD_ALL ||
++                   (manager->priv->load_init_flag == PLUGIN_LOAD_INIT && plugin_priority <= manager->priv->init_load_priority) ||
++                   (manager->priv->load_init_flag == PLUGIN_LOAD_DEFER && plugin_priority > manager->priv->init_load_priority)) {
++                        gboolean res;
++                        res = mate_settings_plugin_info_activate (info);
++                        if (res) {
++                                g_debug ("Plugin %s: active", mate_settings_plugin_info_get_location (info));
++                        } else {
++                                g_debug ("Plugin %s: activation failed", mate_settings_plugin_info_get_location (info));
++                        }
+                 } else {
+-                        g_debug ("Plugin %s: activation failed", mate_settings_plugin_info_get_location (info));
++                        g_debug ("Plugin %s: loading deferred or previously loaded", mate_settings_plugin_info_get_location (info));
+                 }
+         } else {
+                 g_debug ("Plugin %s: inactive", mate_settings_plugin_info_get_location (info));
+@@ -262,7 +274,7 @@ _load_all (MateSettingsManager *manager)
+         _load_dir (manager, MATE_SETTINGS_PLUGINDIR G_DIR_SEPARATOR_S);
+ 
+         manager->priv->plugins = g_slist_sort (manager->priv->plugins, (GCompareFunc) compare_priority);
+-        g_slist_foreach (manager->priv->plugins, (GFunc) maybe_activate_plugin, NULL);
++        g_slist_foreach (manager->priv->plugins, (GFunc) maybe_activate_plugin, manager);
+         mate_settings_profile_end (NULL);
+ }
+ 
+@@ -295,7 +307,7 @@ mate_settings_manager_awake (MateSettingsManager *manager,
+                               GError              **error)
+ {
+         g_debug ("Awake called");
+-        return mate_settings_manager_start (manager, error);
++        return mate_settings_manager_start (manager, PLUGIN_LOAD_ALL, error);
+ }
+ 
+ static gboolean
+@@ -319,7 +331,8 @@ register_manager (MateSettingsManager *manager)
+ 
+ gboolean
+ mate_settings_manager_start (MateSettingsManager *manager,
+-                              GError              **error)
++                              gint               load_init_flag,
++                              GError             **error)
+ {
+         gboolean ret;
+ 
+@@ -339,6 +352,7 @@ mate_settings_manager_start (MateSettingsManager *manager,
+                 goto out;
+         }
+ 
++        manager->priv->load_init_flag = load_init_flag;
+         _load_all (manager);
+ 
+         ret = TRUE;
+@@ -405,8 +419,16 @@ mate_settings_manager_class_init (MateSettingsManagerClass *klass)
+ static void
+ mate_settings_manager_init (MateSettingsManager *manager)
+ {
++        char      *schema;
++        GSettings *settings;
+ 
+         manager->priv = MATE_SETTINGS_MANAGER_GET_PRIVATE (manager);
++
++        schema = g_strdup_printf ("%s.plugins", DEFAULT_SETTINGS_PREFIX);
++        if (is_schema (schema)) {
++                settings = g_settings_new (schema);
++                manager->priv->init_load_priority = g_settings_get_int (settings, "init-load-priority");
++        }
+ }
+ 
+ static void
+diff --git a/mate-settings-daemon/mate-settings-manager.h b/mate-settings-daemon/mate-settings-manager.h
+index 3d2296f..6eaf360 100644
+--- a/mate-settings-daemon/mate-settings-manager.h
++++ b/mate-settings-daemon/mate-settings-manager.h
+@@ -57,6 +57,13 @@ typedef enum
+         MATE_SETTINGS_MANAGER_ERROR_GENERAL
+ } MateSettingsManagerError;
+ 
++enum
++{
++        PLUGIN_LOAD_ALL,
++        PLUGIN_LOAD_INIT,
++        PLUGIN_LOAD_DEFER
++};
++
+ #define MATE_SETTINGS_MANAGER_ERROR mate_settings_manager_error_quark ()
+ 
+ GQuark                 mate_settings_manager_error_quark         (void);
+@@ -65,7 +72,8 @@ GType                  mate_settings_manager_get_type   (void);
+ MateSettingsManager * mate_settings_manager_new        (void);
+ 
+ gboolean               mate_settings_manager_start      (MateSettingsManager *manager,
+-                                                          GError              **error);
++                                                          gint                load_init_flag,
++                                                          GError            **error);
+ void                   mate_settings_manager_stop       (MateSettingsManager *manager);
+ 
+ gboolean               mate_settings_manager_awake      (MateSettingsManager *manager,
+diff --git a/plugins/xsettings/Makefile.am b/plugins/xsettings/Makefile.am
+index c4d0520..c4b821f 100644
+--- a/plugins/xsettings/Makefile.am
++++ b/plugins/xsettings/Makefile.am
+@@ -15,6 +15,8 @@ libxsettings_la_SOURCES = 	\
+ 	xsettings-manager.c	\
+ 	fontconfig-monitor.h	\
+ 	fontconfig-monitor.c	\
++	wm-common.h	\
++	wm-common.c	\
+ 	$(NULL)
+ 
+ libxsettings_la_CPPFLAGS = \
+diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
+index 9105088..69683fb 100644
+--- a/plugins/xsettings/msd-xsettings-manager.c
++++ b/plugins/xsettings/msd-xsettings-manager.c
+@@ -43,6 +43,7 @@
+ #include "msd-xsettings-manager.h"
+ #include "xsettings-manager.h"
+ #include "fontconfig-monitor.h"
++#include "wm-common.h"
+ 
+ #define MATE_XSETTINGS_MANAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), MATE_TYPE_XSETTINGS_MANAGER, MateXSettingsManagerPrivate))
+ 
+@@ -52,6 +53,7 @@
+ 
+ #define CURSOR_THEME_KEY      "cursor-theme"
+ #define CURSOR_SIZE_KEY       "cursor-size"
++#define SCALING_FACTOR_KEY    "window-scaling-factor"
+ 
+ #define FONT_RENDER_SCHEMA    "org.mate.font-rendering"
+ #define FONT_ANTIALIASING_KEY "antialiasing"
+@@ -73,6 +75,14 @@
+ #define DPI_LOW_REASONABLE_VALUE 50
+ #define DPI_HIGH_REASONABLE_VALUE 500
+ 
++/* The minimum resolution at which we turn on a window-scale of 2 */
++#define HIDPI_LIMIT (DPI_FALLBACK * 2)
++
++/* The minimum screen height at which we turn on a window-scale of 2;
++ * below this there just isn't enough vertical real estate for GNOME
++ * apps to work, and it's better to just be tiny */
++#define HIDPI_MIN_HEIGHT 1500
++
+ typedef struct _TranslationEntry TranslationEntry;
+ typedef void (* TranslationFunc) (MateXSettingsManager  *manager,
+                                   TranslationEntry      *trans,
+@@ -92,6 +102,7 @@ struct MateXSettingsManagerPrivate
+         GHashTable *gsettings;
+         GSettings *gsettings_font;
+         fontconfig_monitor_handle_t *fontconfig_handle;
++        gint window_scale;
+ };
+ 
+ #define MSD_XSETTINGS_ERROR msd_xsettings_error_quark ()
+@@ -213,6 +224,70 @@ static TranslationEntry translations [] = {
+         { SOUND_SCHEMA, "input-feedback-sounds",      "Net/EnableInputFeedbackSounds", translate_bool_int }
+ };
+ 
++/* Auto-detect the most appropriate scale factor for the primary monitor.
++ * A lot of this code is shamelessly copied and adapted from Linux Mint/Cinnamon.
++ */
++static int
++get_window_scale_auto ()
++{
++        GdkDisplay   *display;
++        GdkMonitor   *monitor;
++        GdkRectangle  rect;
++        int width_mm, height_mm;
++        int monitor_scale, window_scale;
++
++        display = gdk_display_get_default ();
++        monitor = gdk_display_get_primary_monitor (display);
++
++        /* Use current value as the default */
++        window_scale = 1;
++
++        gdk_monitor_get_geometry (monitor, &rect);
++        width_mm = gdk_monitor_get_width_mm (monitor);
++        height_mm = gdk_monitor_get_height_mm (monitor);
++        monitor_scale = gdk_monitor_get_scale_factor (monitor);
++
++        if (rect.height * monitor_scale < HIDPI_MIN_HEIGHT)
++                return 1;
++
++        /* Some monitors/TV encode the aspect ratio (16/9 or 16/10) instead of the physical size */
++        if ((width_mm == 160 && height_mm == 90) ||
++            (width_mm == 160 && height_mm == 100) ||
++            (width_mm == 16 && height_mm == 9) ||
++            (width_mm == 16 && height_mm == 10))
++                return 1;
++
++        if (width_mm > 0 && height_mm > 0) {
++                double dpi_x, dpi_y;
++
++                dpi_x = (double)rect.width * monitor_scale / (width_mm / 25.4);
++                dpi_y = (double)rect.height * monitor_scale / (height_mm / 25.4);
++                /* We don't completely trust these values so both must be high, and never pick
++                 * higher ratio than 2 automatically */
++                if (dpi_x > HIDPI_LIMIT && dpi_y > HIDPI_LIMIT)
++                        window_scale = 2;
++        }
++
++        return window_scale;
++}
++
++static int
++get_window_scale (MateXSettingsManager *manager)
++{
++        GSettings   *gsettings;
++        gint         scale;
++
++        /* Get scale factor from gsettings */
++        gsettings = g_hash_table_lookup (manager->priv->gsettings, INTERFACE_SCHEMA);
++        scale = g_settings_get_int (gsettings, SCALING_FACTOR_KEY);
++
++        /* Auto-detect */
++        if (scale == 0)
++                scale = get_window_scale_auto ();
++
++        return scale;
++}
++
+ static double
+ dpi_from_pixels_and_mm (int pixels,
+                         int mm)
+@@ -232,7 +307,6 @@ get_dpi_from_x_server (void)
+ {
+         GdkScreen *screen;
+         double     dpi;
+-        gint       scale;
+ 
+         screen = gdk_screen_get_default ();
+         if (screen != NULL) {
+@@ -255,21 +329,15 @@ get_dpi_from_x_server (void)
+                 dpi = DPI_FALLBACK;
+         }
+ 
+-
+-        scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
+-        if (scale)
+-                dpi = dpi * scale;
+-
+         return dpi;
+ }
+ 
+ static double
+-get_dpi_from_gsettings_or_x_server (GSettings *gsettings)
++get_dpi_from_gsettings_or_x_server (GSettings *gsettings, gint scale)
+ {
+-        double value;
+         double dpi;
+ 
+-        value = g_settings_get_double (gsettings, FONT_DPI_KEY);
++        dpi = g_settings_get_double (gsettings, FONT_DPI_KEY);
+ 
+         /* If the user has ever set the DPI preference in GSettings, we use that.
+          * Otherwise, we see if the X server reports a reasonable DPI value:  some X
+@@ -277,11 +345,11 @@ get_dpi_from_gsettings_or_x_server (GSettings *gsettings)
+          * fonts which are unusable.
+          */
+ 
+-        if (value != 0) {
+-                dpi = value;
+-        } else {
++        if (dpi == 0)
+                 dpi = get_dpi_from_x_server ();
+-        }
++
++        dpi *= (double)scale;
++        dpi = CLAMP(dpi, DPI_LOW_REASONABLE_VALUE, DPI_HIGH_REASONABLE_VALUE);
+ 
+         return dpi;
+ }
+@@ -290,7 +358,9 @@ typedef struct
+ {
+         gboolean    antialias;
+         gboolean    hinting;
++        int         window_scale;
+         int         dpi;
++        int         scaled_dpi;
+         char       *cursor_theme;
+         int         cursor_size;
+         const char *rgba;
+@@ -307,7 +377,6 @@ xft_settings_get (MateXSettingsManager *manager,
+                   MateXftSettings *settings)
+ {
+         GSettings *mouse_gsettings;
+-        GdkScreen *screen;
+         char      *antialiasing;
+         char      *hinting;
+         char      *rgba_order;
+@@ -315,18 +384,19 @@ xft_settings_get (MateXSettingsManager *manager,
+         gint       scale;
+ 
+         mouse_gsettings = g_hash_table_lookup (manager->priv->gsettings, MOUSE_SCHEMA);
+-        screen = gdk_screen_get_default();
+ 
+         antialiasing = g_settings_get_string (manager->priv->gsettings_font, FONT_ANTIALIASING_KEY);
+         hinting = g_settings_get_string (manager->priv->gsettings_font, FONT_HINTING_KEY);
+         rgba_order = g_settings_get_string (manager->priv->gsettings_font, FONT_RGBA_ORDER_KEY);
+-        dpi = get_dpi_from_gsettings_or_x_server (manager->priv->gsettings_font);
+-        scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen));
++        scale = get_window_scale (manager);
++        dpi = get_dpi_from_gsettings_or_x_server (manager->priv->gsettings_font, scale);
+ 
+         settings->antialias = TRUE;
+         settings->hinting = TRUE;
+         settings->hintstyle = "hintslight";
+-        settings->dpi = dpi * 1024; /* Xft wants 1/1024ths of an inch */
++        settings->window_scale = scale;
++        settings->dpi = dpi / scale * 1024; /* Xft wants 1/1024ths of an inch */
++        settings->scaled_dpi = dpi * 1024;
+         settings->cursor_theme = g_settings_get_string (mouse_gsettings, CURSOR_THEME_KEY);
+         settings->cursor_size = scale * g_settings_get_int (mouse_gsettings, CURSOR_SIZE_KEY);
+         settings->rgba = "rgb";
+@@ -392,6 +462,121 @@ xft_settings_get (MateXSettingsManager *manager,
+         g_free (antialiasing);
+ }
+ 
++/* Set environment variable.
++ * This should only work during the initialization phase. */
++static gboolean
++update_user_env_variable (const gchar  *variable,
++                          const gchar  *value,
++                          GError      **error)
++{
++        GDBusConnection *connection;
++        gboolean         environment_updated;
++        GVariant        *reply;
++        GError          *bus_error = NULL;
++
++        g_setenv (variable, value, TRUE);
++
++        environment_updated = FALSE;
++        connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, error);
++
++        if (connection == NULL) {
++                return FALSE;
++        }
++
++        reply = g_dbus_connection_call_sync (connection,
++                        "org.gnome.SessionManager",
++                        "/org/gnome/SessionManager",
++                        "org.gnome.SessionManager",
++                        "Setenv",
++                        g_variant_new ("(ss)", variable, value),
++                        NULL,
++                        G_DBUS_CALL_FLAGS_NONE,
++                        -1, NULL, &bus_error);
++
++        if (bus_error != NULL) {
++                g_propagate_error (error, bus_error);
++        } else {
++                environment_updated = TRUE;
++                g_variant_unref (reply);
++        }
++
++        g_clear_object (&connection);
++
++        return environment_updated;
++}
++
++static gboolean
++delayed_toggle_bg_draw (gboolean value)
++{
++        GSettings *settings;
++        settings = g_settings_new ("org.mate.background");
++        g_settings_set_boolean (settings, "show-desktop-icons", value);
++        return FALSE;
++}
++
++static void
++scale_change_workarounds (MateXSettingsManager *manager, int new_scale)
++{
++        if (manager->priv->window_scale == new_scale)
++                return;
++
++        GError *error = NULL;
++
++        /* This is only useful during the Initialization phase, so we guard against
++         * unnecessarily attempting to set it later. */
++        if (!manager->priv->window_scale) {
++                /* Set env variables to properly scale QT applications */
++                if (!update_user_env_variable ("QT_AUTO_SCREEN_SCALE_FACTOR", "0", &error)) {
++                        g_warning ("There was a problem when setting QT_AUTO_SCREEN_SCALE_FACTOR=0: %s", error->message);
++                        g_clear_error (&error);
++                }
++                if (!update_user_env_variable ("QT_SCALE_FACTOR", new_scale == 2 ? "2" : "1", &error)) {
++                        g_warning ("There was a problem when setting QT_SCALE_FACTOR=%d: %s", new_scale, error->message);
++                        g_clear_error (&error);
++                }
++        } else {
++                /* Restart marco */
++                /* FIXME: The ideal scenario would be for marco to respect window scaling and thus
++                 * resize itself. Currently this is not happening, so msd restarts it when the window
++                 * scaling factor changes so that it's visually correct. */
++                wm_common_update_window();
++                gchar *wm = wm_common_get_current_window_manager ();
++                if (g_strcmp0 (wm, WM_COMMON_MARCO) == 0) {
++                        const gchar * const marco[] = {"marco", "--replace", NULL};
++                        if (!g_spawn_async (NULL, marco, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error)) {
++                                g_warning ("There was a problem restarting marco: %s", error->message);
++                                g_clear_error (&error);
++                        }
++                }
++                g_free (wm);
++
++                /* Restart mate-panel */
++                /* FIXME: The ideal scenario would be for mate-panel to respect window scaling and thus
++                 * resize itself. Currently this is not happening, so msd restarts it when the window
++                 * scaling factor changes so that it's visually correct. */
++                const gchar * const mate_panel[] = {"mate-panel", "--replace", NULL};
++                if (!g_spawn_async (NULL, mate_panel, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error)) {
++                        g_warning ("There was a problem restarting mate-panel: %s", error->message);
++                        g_clear_error (&error);
++                }
++
++                /* Toggle icons on desktop to fix size */
++                /* FIXME: The ideal scenario would be for caja to respect window scaling and thus
++                 * resize itself. Currently this is not happening, so msd restarts it when the window
++                 * scaling factor changes so that it's visually correct. */
++                GSettings *desktop_settings;
++                desktop_settings = g_settings_new ("org.mate.background");
++                if (g_settings_get_boolean (desktop_settings, "show-desktop-icons")) {
++                        /* Delay the toggle to allow enough time for the desktop to redraw */
++                        g_timeout_add_seconds (1, (GSourceFunc) delayed_toggle_bg_draw, (gpointer) FALSE);
++                        g_timeout_add_seconds (2, (GSourceFunc) delayed_toggle_bg_draw, (gpointer) TRUE);
++                }
++        }
++
++        /* Store new scale value */
++        manager->priv->window_scale = new_scale;
++}
++
+ static void
+ xft_settings_set_xsettings (MateXSettingsManager *manager,
+                             MateXftSettings      *settings)
+@@ -404,7 +589,9 @@ xft_settings_set_xsettings (MateXSettingsManager *manager,
+                 xsettings_manager_set_int (manager->priv->managers [i], "Xft/Antialias", settings->antialias);
+                 xsettings_manager_set_int (manager->priv->managers [i], "Xft/Hinting", settings->hinting);
+                 xsettings_manager_set_string (manager->priv->managers [i], "Xft/HintStyle", settings->hintstyle);
+-                xsettings_manager_set_int (manager->priv->managers [i], "Xft/DPI", settings->dpi);
++                xsettings_manager_set_int (manager->priv->managers [i], "Gdk/WindowScalingFactor", settings->window_scale);
++                xsettings_manager_set_int (manager->priv->managers [i], "Gdk/UnscaledDPI", settings->dpi);
++                xsettings_manager_set_int (manager->priv->managers [i], "Xft/DPI", settings->scaled_dpi);
+                 xsettings_manager_set_string (manager->priv->managers [i], "Xft/RGBA", settings->rgba);
+                 xsettings_manager_set_string (manager->priv->managers [i], "Xft/lcdfilter",
+                                               g_str_equal (settings->rgba, "rgb") ? "lcddefault" : "none");
+@@ -412,6 +599,8 @@ xft_settings_set_xsettings (MateXSettingsManager *manager,
+                 xsettings_manager_set_string (manager->priv->managers [i], "Gtk/CursorThemeName", settings->cursor_theme);
+         }
+         mate_settings_profile_end (NULL);
++
++        scale_change_workarounds (manager, settings->window_scale);
+ }
+ 
+ static void
+@@ -507,6 +696,23 @@ update_xft_settings (MateXSettingsManager *manager)
+         mate_settings_profile_end (NULL);
+ }
+ 
++static void
++recalculate_scale_callback (GdkScreen            *screen,
++                            MateXSettingsManager *manager)
++{
++        int i;
++        int new_scale = get_window_scale (manager);
++
++        if (manager->priv->window_scale == new_scale)
++                return;
++
++        update_xft_settings (manager);
++
++        for (i = 0; manager->priv->managers [i]; i++) {
++                xsettings_manager_notify (manager->priv->managers [i]);
++        }
++}
++
+ static void
+ xft_callback (GSettings            *gsettings,
+               const gchar          *key,
+@@ -609,6 +815,7 @@ xsettings_callback (GSettings             *gsettings,
+         GVariant         *value;
+ 
+         if (g_str_equal (key, CURSOR_THEME_KEY) ||
++            g_str_equal (key, SCALING_FACTOR_KEY) ||
+             g_str_equal (key, CURSOR_SIZE_KEY)) {
+                 xft_callback (NULL, key, manager);
+                 return;
+@@ -692,6 +899,7 @@ mate_xsettings_manager_start (MateXSettingsManager *manager,
+ {
+         guint        i;
+         GList       *list, *l;
++        GdkScreen   *screen;
+ 
+         g_debug ("Starting xsettings manager");
+         mate_settings_profile_start (NULL);
+@@ -718,6 +926,7 @@ mate_xsettings_manager_start (MateXSettingsManager *manager,
+                 g_signal_connect_object (G_OBJECT (l->data), "changed",
+                 			 G_CALLBACK (xsettings_callback), manager, 0);
+         }
++
+         g_list_free (list);
+ 
+         for (i = 0; i < G_N_ELEMENTS (translations); i++) {
+@@ -738,6 +947,11 @@ mate_xsettings_manager_start (MateXSettingsManager *manager,
+                 g_variant_unref (val);
+         }
+ 
++        /* Detect changes in screen resolution */
++        screen = gdk_screen_get_default();
++        g_signal_connect(screen, "size-changed", G_CALLBACK (recalculate_scale_callback), manager);
++        g_signal_connect(screen, "monitors-changed", G_CALLBACK (recalculate_scale_callback), manager);
++
+         manager->priv->gsettings_font = g_settings_new (FONT_RENDER_SCHEMA);
+         g_signal_connect (manager->priv->gsettings_font, "changed", G_CALLBACK (xft_callback), manager);
+         update_xft_settings (manager);
+diff --git a/plugins/xsettings/wm-common.c b/plugins/xsettings/wm-common.c
+new file mode 100644
+index 0000000..ccb9629
+--- /dev/null
++++ b/plugins/xsettings/wm-common.c
+@@ -0,0 +1,108 @@
++#include <X11/Xatom.h>
++#include <gdk/gdkx.h>
++#include <gdk/gdk.h>
++#include <string.h>
++#include <glib.h>
++#include <glib-object.h>
++#include "wm-common.h"
++
++/* Our WM Window */
++static Window wm_window = None;
++
++static char *
++wm_common_get_window_manager_property (Atom atom)
++{
++  Atom utf8_string, type;
++  int result;
++  char *retval;
++  int format;
++  gulong nitems;
++  gulong bytes_after;
++  gchar *val;
++
++  if (wm_window == None)
++    return NULL;
++
++  utf8_string = gdk_x11_get_xatom_by_name ("UTF8_STRING");
++
++  gdk_error_trap_push ();
++
++  val = NULL;
++  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
++		  	       wm_window,
++			       atom,
++			       0, G_MAXLONG,
++			       False, utf8_string,
++			       &type, &format, &nitems,
++			       &bytes_after, (guchar **) &val);
++
++  if (gdk_error_trap_pop () || result != Success ||
++      type != utf8_string || format != 8 || nitems == 0 ||
++      !g_utf8_validate (val, nitems, NULL))
++    {
++      retval = NULL;
++    }
++  else
++    {
++      retval = g_strndup (val, nitems);
++    }
++
++  if (val)
++    XFree (val);
++
++  return retval;
++}
++
++char*
++wm_common_get_current_window_manager (void)
++{
++  Atom atom = gdk_x11_get_xatom_by_name ("_NET_WM_NAME");
++  char *result;
++
++  result = wm_common_get_window_manager_property (atom);
++  if (result)
++    return result;
++  else
++    return g_strdup (WM_COMMON_UNKNOWN);
++}
++
++static void
++update_wm_window (void)
++{
++  Window *xwindow;
++  Atom type;
++  gint format;
++  gulong nitems;
++  gulong bytes_after;
++
++  XGetWindowProperty (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), GDK_ROOT_WINDOW (),
++		      gdk_x11_get_xatom_by_name ("_NET_SUPPORTING_WM_CHECK"),
++		      0, G_MAXLONG, False, XA_WINDOW, &type, &format,
++		      &nitems, &bytes_after, (guchar **) &xwindow);
++
++  if (type != XA_WINDOW)
++    {
++      wm_window = None;
++     return;
++    }
++
++  gdk_error_trap_push ();
++  XSelectInput (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), *xwindow, StructureNotifyMask | PropertyChangeMask);
++  XSync (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), False);
++
++  if (gdk_error_trap_pop ())
++    {
++       XFree (xwindow);
++       wm_window = None;
++       return;
++    }
++
++    wm_window = *xwindow;
++    XFree (xwindow);
++}
++
++void
++wm_common_update_window ()
++{
++  update_wm_window();
++}
+diff --git a/plugins/xsettings/wm-common.h b/plugins/xsettings/wm-common.h
+new file mode 100644
+index 0000000..379adbf
+--- /dev/null
++++ b/plugins/xsettings/wm-common.h
+@@ -0,0 +1,15 @@
++#ifndef WM_COMMON_H
++#define WM_COMMON_H
++
++#define WM_COMMON_MARCO       "Metacity (Marco)"
++#define WM_COMMON_SAWFISH     "Sawfish"
++#define WM_COMMON_METACITY    "Metacity"
++#define WM_COMMON_COMPIZ      "Compiz"
++#define WM_COMMON_COMPIZ_OLD  "compiz"
++#define WM_COMMON_UNKNOWN     "Unknown"
++
++gchar *wm_common_get_current_window_manager (void);
++void   wm_common_update_window (void);
++
++#endif /* WM_COMMON_H */
++
