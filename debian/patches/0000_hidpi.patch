@@ -1,3 +1,6 @@
+Author: Victor Kareh <vkareh@vkareh.net>
+Description: Support font size and mouse cursor auto-scaling for HiDPI
+
 diff --git a/plugins/a11y-keyboard/msd-a11y-preferences-dialog.c b/plugins/a11y-keyboard/msd-a11y-preferences-dialog.c
 index 165d5b0..185b8c9 100644
 --- a/plugins/a11y-keyboard/msd-a11y-preferences-dialog.c
