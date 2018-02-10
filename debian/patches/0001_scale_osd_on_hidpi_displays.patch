@@ -1,0 +1,93 @@
+Author: Victor Kareh <vkareh@vkareh.net>
+Description: Scale OSD size correctly on HiDPI displays
+
+diff --git a/plugins/common/msd-osd-window.c b/plugins/common/msd-osd-window.c
+index a3e76d0..e0f1ad7 100644
+--- a/plugins/common/msd-osd-window.c
++++ b/plugins/common/msd-osd-window.c
+@@ -53,6 +53,7 @@ struct MsdOsdWindowPrivate
+         guint                    hide_timeout_id;
+         guint                    fade_timeout_id;
+         double                   fade_out_alpha;
++        gint                     scale_factor;
+ };
+ 
+ enum {
+@@ -422,13 +423,16 @@ msd_osd_window_is_composited (MsdOsdWindow *window)
+  * @window: a #MsdOsdWindow
+  *
+  * Return value: TRUE if the @window's idea of being composited matches whether
+- * its current screen is actually composited.
++ * its current screen is actually composited, and whether the scale factor has
++ * not changed since last draw.
+  */
+ gboolean
+ msd_osd_window_is_valid (MsdOsdWindow *window)
+ {
+         GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (window));
+-        return gdk_screen_is_composited (screen) == window->priv->is_composited;
++        gint scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (window));
++        return gdk_screen_is_composited (screen) == window->priv->is_composited
++            && scale_factor == window->priv->scale_factor;
+ }
+ 
+ static void
+@@ -441,6 +445,7 @@ msd_osd_window_init (MsdOsdWindow *window)
+         screen = gtk_widget_get_screen (GTK_WIDGET (window));
+ 
+         window->priv->is_composited = gdk_screen_is_composited (screen);
++        window->priv->scale_factor = gtk_widget_get_scale_factor (GTK_WIDGET (window));
+ 
+         if (window->priv->is_composited) {
+                 gdouble scalew, scaleh, scale;
+@@ -453,8 +458,8 @@ msd_osd_window_init (MsdOsdWindow *window)
+                 gtk_style_context_add_class (style, "window-frame");
+ 
+                 /* assume 130x130 on a 640x480 display and scale from there */
+-                scalew = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / 640.0;
+-                scaleh = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / 480.0;
++                scalew = WidthOfScreen (gdk_x11_screen_get_xscreen (screen)) / (640.0 * window->priv->scale_factor);
++                scaleh = HeightOfScreen (gdk_x11_screen_get_xscreen (screen)) / (480.0 * window->priv->scale_factor);
+                 scale = MIN (scalew, scaleh);
+                 size = 130 * MAX (1, scale);
+ 
+@@ -462,7 +467,7 @@ msd_osd_window_init (MsdOsdWindow *window)
+ 
+                 window->priv->fade_out_alpha = 1.0;
+         } else {
+-		gtk_container_set_border_width (GTK_CONTAINER (window), 12);
++                gtk_container_set_border_width (GTK_CONTAINER (window), 12);
+         }
+ }
+ 
+diff --git a/plugins/xsettings/msd-xsettings-manager.c b/plugins/xsettings/msd-xsettings-manager.c
+index 6d9061b..a31b09a 100644
+--- a/plugins/xsettings/msd-xsettings-manager.c
++++ b/plugins/xsettings/msd-xsettings-manager.c
+@@ -542,7 +542,16 @@ scale_change_workarounds (MateXSettingsManager *manager, int new_scale)
+                 wm_common_update_window();
+                 gchar *wm = wm_common_get_current_window_manager ();
+                 if (g_strcmp0 (wm, WM_COMMON_MARCO) == 0) {
+-                        const gchar * const marco[] = {"marco", "--replace", NULL};
++                        gchar * marco[4] = {"marco", "--replace", NULL, NULL};
++
++                        GdkScreen *screen;
++                        screen = gdk_screen_get_default ();
++
++                        if (!gdk_screen_is_composited (screen)) {
++                                marco[2] = malloc(strlen("--no-composite") + 1);
++                                strcpy (marco[2], "--no-composite");
++                        }
++
+                         if (!g_spawn_async (NULL, marco, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error)) {
+                                 g_warning ("There was a problem restarting marco: %s", error->message);
+                                 g_clear_error (&error);
+@@ -554,7 +563,7 @@ scale_change_workarounds (MateXSettingsManager *manager, int new_scale)
+                 /* FIXME: The ideal scenario would be for mate-panel to respect window scaling and thus
+                  * resize itself. Currently this is not happening, so msd restarts it when the window
+                  * scaling factor changes so that it's visually correct. */
+-                const gchar * const mate_panel[] = {"killall", "mate-panel", NULL};
++                gchar * mate_panel[3] = {"killall", "mate-panel", NULL};
+                 if (!g_spawn_async (NULL, mate_panel, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error)) {
+                         g_warning ("There was a problem restarting mate-panel: %s", error->message);
+                         g_clear_error (&error);
