@@ -1,3 +1,33 @@
+mate-settings-daemon (1.20.0-1) unstable; urgency=medium
+
+  [ Martin Wimpress ]
+  * debian/patches (already in 1.19.2-0ubuntu1):
+    + Drop 1000_global_menu_support.diff. Applied upstream.
+    + Add 000{0,1}_hidpi.patch. HiDPI support.
+  * debian/patches: (already in 1.20.0-0ubuntu1):
+    + Drop 000*_hidpi.patch files. Applied upstream.
+  * debian/patches: (this release):
+    + Add 0001_scale_osd_on_hidpi_displays.patch. Scale OSD size correctly
+      on HiDPI displays.
+  * debian/copyright (already in 1.20.0-0ubuntu1):
+    + Update copyright attributions.
+  * debian/control (already in 1.19.2-0ubuntu1):
+    + Dependencies updated for MATE 1.19.
+    + Drop B-D autotools-dev. Since compatibility level 10, debhelper enables
+      the autoreconf sequence by default.
+  * debian/control (already in 1.20.0-0ubuntu1):
+    + Update Build-Depends: to support MATE Desktop 1.20.
+  * debian/changelog: White-space cleanup.
+
+  [ Vangelis Mouhtsis ]
+  * debian/control (already in 1.19.2-0ubuntu1):
+    + Temporarily have pkg-mate-team ML under Uploaders:.
+    + Update Maintainer: field to debian-mate ML on lists.debian.org.
+    + Rename pretty name of our team -> Debian+Ubuntu MATE Packaging Team.
+    + Bump Standards-Version: to 4.1.3. No changes needed.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 12 Feb 2018 11:31:35 +0100
+
 mate-settings-daemon (1.20.0-0ubuntu1) bionic; urgency=medium
 
   * New upstream release.
