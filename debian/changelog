@@ -1,3 +1,23 @@
+mate-settings-daemon (1.20.0-2) unstable; urgency=medium
+
+  [ Mike Gabriel ]
+  * debian/control:
+    + Drop extra Priority: field for bin:pkg mate-settings-dev.
+  * debian/copyright:
+    + Use secure URI for copyright format.
+  * debian/patches:
+    + Add patch header to
+      0002_prevent_media-keys_swallowing_modifier_keys.patch.
+  * debian/watch:
+    + Use secure URI to obtain upstream sources
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 0002_prevent_media-keys_swallowing_modifier_keys.patch. Prevent
+      media-keys bindings from swallowing modifier keys.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 11 Mar 2018 11:53:24 +0100
+
 mate-settings-daemon (1.20.0-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
