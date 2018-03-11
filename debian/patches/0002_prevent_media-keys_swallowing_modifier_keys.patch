@@ -1,3 +1,20 @@
+From d0368790c6deda728eb46337247bd0a9a844ac4b Mon Sep 17 00:00:00 2001
+From: Victor Kareh <vkareh@vkareh.net>
+Date: Wed, 7 Mar 2018 06:41:17 -0500
+Subject: [PATCH] Prevent media-keys bindings from swallowing modifier keys
+
+This changes how the media-keys manager determines successful
+key-bindings from KeyRelease to KeyPress so that it does not conflict
+with third-party applications that want to use modifier keys as global
+key-bindings. We've already done this change for general keybindings and
+marco.
+
+It also cleans up a bunch of deprectation warnings.
+---
+ plugins/keybindings/msd-keybindings-manager.c | 20 ++++++-----
+ plugins/media-keys/msd-media-keys-manager.c   | 52 +++++++++++++++++++--------
+ 2 files changed, 49 insertions(+), 23 deletions(-)
+
 diff --git a/plugins/keybindings/msd-keybindings-manager.c b/plugins/keybindings/msd-keybindings-manager.c
 index f04ac54..76905db 100644
 --- a/plugins/keybindings/msd-keybindings-manager.c
