@@ -1,3 +1,6 @@
+Author: Victor Kareh <vkareh@vkareh.net>
+Description: Support background fallback on HiDPI
+
 diff --git a/plugins/background/msd-background-manager.c b/plugins/background/msd-background-manager.c
 index b4eaca6..724e01e 100644
 --- a/plugins/background/msd-background-manager.c
