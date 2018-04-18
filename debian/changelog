@@ -1,3 +1,13 @@
+mate-settings-daemon (1.20.1-2) unstable; urgency=medium
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 0001_hidpi_background_support.patch. Support background fallback on
+      HiDPI.
+    + 0001_hidpi_background_support.patch add Author and Description
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 18 Apr 2018 12:15:28 +0200
+
 mate-settings-daemon (1.20.1-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
