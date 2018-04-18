@@ -1,3 +1,12 @@
+mate-settings-daemon (1.20.1-3) unstable; urgency=medium
+
+  * debian/control:
+    + Bump versioned B-D on libmate-desktop-dev to 1.20.1-2~ due to added
+      symbol mate_bg_create_surface_scale(). Fixes FTBFS of previous
+      upload.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 18 Apr 2018 13:51:50 +0200
+
 mate-settings-daemon (1.20.1-2) unstable; urgency=medium
 
   [ Martin Wimpress ]
