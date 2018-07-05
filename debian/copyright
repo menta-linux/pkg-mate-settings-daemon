@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: MATE Settings Daemon
 Upstream-Contact: Martin Wimpress <martin@mate-desktop.org>
-Source: http://git.mate-desktop.org/mate-settings-daemon/
+Source: https://git.mate-desktop.org/mate-settings-daemon/
 
 Files: mate-settings-daemon/main.c
        mate-settings-daemon/mate-settings-manager.c
