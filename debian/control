@@ -120,4 +120,3 @@ Description: daemon handling the MATE session settings (development files)
  .
  This package contains the development files for building
  mate-settings-daemon plugins.
-
