@@ -39,7 +39,7 @@ Vcs-Git: https://salsa.debian.org/debian-mate-team/mate-settings-daemon.git
 
 Package: mate-settings-daemon
 Architecture: any
-Depends: mate-desktop-common (>= 1.18),
+Depends: mate-desktop-common (>= 1.20.4-2~),
          mate-polkit,
          mate-settings-daemon-common (= ${source:Version}),
          x11-xserver-utils,
