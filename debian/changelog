@@ -1,8 +1,26 @@
-mate-settings-daemon (1.22.0-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.22.0-1) unstable; urgency=medium
 
+  [ Martin Wimpress ]
   * New upstream release.
+  * debian/patches:
+    + Drop 0001_support-org-mate-a11y-kbd-stickykeys-latch-to-lock.patch.
+      Applied upstream.
+  * debian/control:
+    + Updated for MATE Desktop 1.22
+  * debian/mate-settings-daemon-common.install:
+    + Add udev rules.
+  * debian/copyright:
+    + Update copyright attributions.
 
- -- Martin Wimpress <martin.wimpress@ubuntu.com>  Mon, 18 Mar 2019 20:30:22 +0000
+  [ Mike Gabriel ]
+  * debian/control:
+    + Bump Standards-Version: to 4.4.0. No changes needed.
+  * debian/copyright:
+    + Update copyright attributions.
+  * debian/rules:
+    + Drop dbgsym-migration dh_strip override.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 21 Jul 2019 17:18:34 +0200
 
 mate-settings-daemon (1.20.4-1) unstable; urgency=medium
 
