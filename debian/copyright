@@ -274,6 +274,7 @@ Comment:
  License assumed from COPYING file.
 
 Files: .tx/config
+       .travis.yml
        .github/issue_template.md
        data/Makefile.am
        data/*.in.in
