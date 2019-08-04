@@ -1,3 +1,15 @@
+mate-settings-daemon (1.22.0-2) unstable; urgency=medium
+
+  * debian/control:
+    + Add B-D: dh-exec.
+  * debian/rules:
+    + Add --disable-rfkill configure option on non-Linux host archs.
+  * debian/mate-settings-daemon-common.install:
+    + Use dh-exec; omit installation of udev rules as they don't get created
+      when --disable-rfkill configure option is used on non-Linux host archs.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 04 Aug 2019 12:46:49 +0200
+
 mate-settings-daemon (1.22.0-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
