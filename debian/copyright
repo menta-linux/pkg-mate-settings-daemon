@@ -267,14 +267,9 @@ Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
 License: MIT~OldStyle+RedHat
 
-Files: plugins/a11y-settings/a11y-settings.mate-settings-plugin.in
-Copyright: 2011, Red Hat, Inc.
-License: GPL-2+
-Comment:
- License assumed from COPYING file.
-
 Files: .tx/config
        .travis.yml
+       .github/FUNDING.yml
        .github/issue_template.md
        data/Makefile.am
        data/*.in.in
@@ -284,44 +279,36 @@ Files: .tx/config
        data/mate-settings-daemon.1
        Makefile.am
        makepot
+       its/marco-keybindings.its
+       its/marco-keybindings.loc
        mate-settings-daemon/Makefile.am
        mate-settings-daemon/mate-settings-manager.xml
        mate-settings-daemon/mate-settings-bus.c
        mate-settings-daemon/mate-settings-bus.h
        plugins/a11y-keyboard/Makefile.am
-       plugins/a11y-keyboard/*.mate-settings-plugin.in
+       plugins/*/*.desktop.in
        plugins/a11y-keyboard/*.ui
        plugins/a11y-settings/Makefile.am
        plugins/background/Makefile.am
-       plugins/background/*.mate-settings-plugin.in
        plugins/clipboard/Makefile.am
-       plugins/clipboard/*.mate-settings-plugin.in
        plugins/common/Makefile.am
        plugins/datetime/Makefile.am
        plugins/datetime/*.conf
-       plugins/datetime/org.mate.settingsdaemon.*.in
-       plugins/datetime/org.mate.SettingsDaemon.*.in
+       plugins/datetime/*.in
        plugins/datetime/*.xml
        plugins/dummy/Makefile.am
-       plugins/dummy/*.mate-settings-plugin.in
        plugins/housekeeping/Makefile.am
-       plugins/housekeeping/*.mate-settings-plugin.in
        plugins/keybindings/Makefile.am
-       plugins/keybindings/*.mate-settings-plugin.in
        plugins/keyboard/Makefile.am
-       plugins/keyboard/*.mate-settings-plugin.in
        plugins/keyboard/*.png
        plugins/Makefile.am
        plugins/media-keys/Makefile.am
        plugins/media-keys/msd-marshal.*
-       plugins/media-keys/*.mate-settings-plugin.in
        plugins/media-keys/*.list
        plugins/media-keys/*.ui
        plugins/media-keys/*.xml
        plugins/mouse/Makefile.am
-       plugins/mouse/*.mate-settings-plugin.in
        plugins/mpris/Makefile.am
-       plugins/mpris/*.mate-settings-plugin.in
        plugins/rfkill/61-mate-settings-daemon-rfkill.rules
        plugins/rfkill/Makefile.am
        plugins/rfkill/msd-rfkill-manager.c
@@ -331,25 +318,19 @@ Files: .tx/config
        plugins/rfkill/rfkill-glib.c
        plugins/rfkill/rfkill-glib.h
        plugins/rfkill/rfkill.h
-       plugins/rfkill/rfkill.mate-settings-plugin.in
        plugins/smartcard/Makefile.am
-       plugins/smartcard/*.mate-settings-plugin.in
        plugins/sound/Makefile.am
-       plugins/sound/*.mate-settings-plugin.in
        plugins/typing-break/Makefile.am
-       plugins/typing-break/*.mate-settings-plugin.in
        plugins/xrandr/Makefile.am
-       plugins/xrandr/*.mate-settings-plugin.in
        plugins/xrandr/*.png
        plugins/xrandr/*.xml
        plugins/xrandr/*.svg
        plugins/xrdb/data/Makefile.am
        plugins/xrdb/Makefile.am
        plugins/xrdb/data/*.ad
-       plugins/xrdb/*.mate-settings-plugin.in
        plugins/xsettings/Makefile.am
-       plugins/xsettings/*.mate-settings-plugin.in
        po/ChangeLog
+       po/Makevars
        po/LINGUAS
        po/POTFILES.in
        po/POTFILES.skip
@@ -357,8 +338,6 @@ Files: .tx/config
        autogen.sh
        configure.ac
        AUTHORS
-       COPYING
-       COPYING.LIB
        ChangeLog
        NEWS
        README
