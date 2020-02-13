@@ -1,4 +1,4 @@
-mate-settings-daemon (1.24.0-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.24.0-1) unstable; urgency=medium
 
   [ Mike Gabriel ]
   * debian/control:
@@ -9,8 +9,15 @@ mate-settings-daemon (1.24.0-1) UNRELEASED; urgency=medium
 
   [ Martin Wimpress ]
   * New upstream release.
+  * debian/patches:
+    + Drop 0001_new_video_key.patch. Rejected upstream.
+  * debian/copyright:
+    + Update copyright attributions.
+  * debian/control:
+    + Update Build-Depends: to support MATE Desktop 1.24.
+    + Add B-D policykit-1.
 
- -- Martin Wimpress <martin.wimpress@ubuntu.com>  Wed, 12 Feb 2020 17:22:15 +0000
+ -- Mike Gabriel <sunweaver@debian.org>  Thu, 13 Feb 2020 12:28:50 +0100
 
 mate-settings-daemon (1.22.1-2) unstable; urgency=medium
 
