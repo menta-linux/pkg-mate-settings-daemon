@@ -74,8 +74,10 @@ Architecture: all
 Depends: ${misc:Depends},
 Replaces: mate-settings-daemon-gstreamer (<< 1.9.0),
           mate-settings-daemon-pulse (<< 1.9.0),
+          mate-desktop-common (<< 1.24.0-1~),
 Breaks: mate-settings-daemon-gstreamer (<< 1.9.0),
         mate-settings-daemon-pulse (<< 1.9.0),
+        mate-desktop-common (<< 1.24.0-1~),
 Description: daemon handling the MATE session settings (common files)
  This package contains the daemon which is responsible for setting the
  various parameters of a MATE session and the applications that run
