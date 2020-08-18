@@ -1,8 +1,13 @@
-mate-settings-daemon (1.24.1-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.24.1-1) unstable; urgency=medium
 
-  * New upstream release
+  [ Martin Wimpress ]
+  * New upstream release.
+  * debian/patches:
+     + Refactor 1001_RDA-Don-t-apply-stored-monitor-configuration-if-sess.patch.
+  * debian/copyright:
+     + Update copyright attributions.
 
- -- Martin Wimpress <martin.wimpress@ubuntu.com>  Fri, 14 Aug 2020 14:55:27 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Tue, 18 Aug 2020 14:51:26 +0200
 
 mate-settings-daemon (1.24.0-2) unstable; urgency=medium
 
