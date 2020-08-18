@@ -267,7 +267,13 @@ Files: plugins/mouse/msd-locate-pointer.h
 Copyright: 2001, Jonathan Blandford <jrb@gnome.org>
 License: MIT~OldStyle+RedHat
 
-Files: .tx/config
+Files: plugins/mpris/bus-watch-namespace.c
+       plugins/mpris/bus-watch-namespace.h
+Copyright: 2013, Canonical Ltd.
+License: LGPL-2+
+
+Files: .build.yml
+       .tx/config
        .travis.yml
        .github/FUNDING.yml
        .github/issue_template.md
