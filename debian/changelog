@@ -1,8 +1,9 @@
-mate-settings-daemon (1.24.2-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.26.0-1) UNRELEASED; urgency=medium
 
   * New upstream maintenance release.
+  * New upstream release.
 
- -- Martin Wimpress <martin.wimpress@ubuntu.com>  Sat, 27 Mar 2021 15:07:36 +0000
+ -- Martin Wimpress <code@wimpress.io>  Sat, 21 Aug 2021 18:01:47 +0100
 
 mate-settings-daemon (1.24.1-1) unstable; urgency=medium
 
