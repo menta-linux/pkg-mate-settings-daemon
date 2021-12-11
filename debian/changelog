@@ -1,9 +1,22 @@
-mate-settings-daemon (1.26.0-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.26.0-1) unstable; urgency=medium
 
-  * New upstream maintenance release.
+  [ Martin Wimpress ]
   * New upstream release.
+    - Fix various memory leaks. (Closes: #837781).
 
- -- Martin Wimpress <code@wimpress.io>  Sat, 21 Aug 2021 18:01:47 +0100
+  [ Mike Gabriel ]
+  * debian/patches:
+    + Rebase 1001_RDA-Don-t-apply-stored-monitor-configuration-if-sess.patch.
+  * debian/mate-settings-daemon.maintscript:
+    + Add file. Remove obsolete conffile. (Closes: #953077).
+  * debian/control:
+    + Bump Standards-Version: to 4.6.0. No changes needed.
+  * debian/watch:
+    + Use format version 4."
+  * debian/copyright:
+    + Update copyright attributions.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sat, 11 Dec 2021 16:57:53 +0100
 
 mate-settings-daemon (1.24.1-1) unstable; urgency=medium
 
