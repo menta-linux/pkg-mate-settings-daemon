@@ -1,3 +1,17 @@
+mate-settings-daemon (1.26.0-2) unstable; urgency=medium
+
+  [ Martin Wimpress ]
+  * debian/patches:
+    + Add 1002-debounce_multiple_rfkill_events.patch (LP: #1936956)
+
+  [ Mike Gabriel ]
+  * debian/control:
+    + Drop B-D: on deprecated policykit-1. Not required. B-D on
+      libpolkit-gobject-1-dev is sufficient. (Closes: #1025600).
+    + Switch from libfontconfig1-dev to libfontconfig-dev. Thanks, lintian.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 10 Sep 2023 14:02:31 +0200
+
 mate-settings-daemon (1.26.0-1) unstable; urgency=medium
 
   [ Martin Wimpress ]
