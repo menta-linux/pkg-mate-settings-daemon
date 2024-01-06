@@ -423,8 +423,8 @@ Copyright: 2009, Red Hat, Inc.
 License: public-domain
 
 Files: debian/*
-Copyright: 2011-2014 Stefano Karapetsas <stefano@karapetsas.com>
-           2014 Mike Gabriel <sunweaver@debian.org>
+Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
+           2014-2024, Mike Gabriel <sunweaver@debian.org>
 License: GPL-2+ or GPL-3+ or LGPL-2+ or LGPL-2.1+ or MIT~OldStyle+RedHat or MIT~OldStyleWithDisclaimer+RedHat
 
 License: GPL-2+
