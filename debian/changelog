@@ -1,8 +1,18 @@
-mate-settings-daemon (1.26.1-1) UNRELEASED; urgency=medium
+mate-settings-daemon (1.26.1-1) unstable; urgency=medium
 
   * New upstream release.
+  * debian/control:
+    + Bump Standards-Version: to 4.6.2. No changes needed.
+  * debian/copyright:
+    + Update copyright attribution for debian/.
+  * debian/patches:
+    + Fix typo in patch comment (1002-debounce_multiple_rfkill_events.patch).
+  * debian/rules:
+    + Set libexecdir to /usr/libexec (rather than /usr/bin).
+  * debian/mate-settings-daemon.install:
+    + Adjust to new libexecdir location.
 
- -- Mike Gabriel <sunweaver@debian.org>  Sat, 06 Jan 2024 07:59:39 +0100
+ -- Mike Gabriel <sunweaver@debian.org>  Sat, 06 Jan 2024 08:00:22 +0100
 
 mate-settings-daemon (1.26.0-2) unstable; urgency=medium
 
