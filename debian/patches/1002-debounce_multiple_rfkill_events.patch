@@ -3,7 +3,7 @@ HP Wireless device (HPQ6001) and Intel HID device (INT33D5) can all send
 rfkill hotkey event.
 
 Preferably we should just leave one device and unregister the others. In
-practice this is hard to achieve, becuase the presence of a device
+practice this is hard to achieve, because the presence of a device
 doesn't necessarily mean it can generate rfkill hotkey event, we can
 only know what devices are capable to generate rfkill event when the
 hotkey gets pressed.
