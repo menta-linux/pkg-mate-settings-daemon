@@ -34,7 +34,7 @@ Build-Depends: debhelper (>= 10.3~),
                libxt-dev,
                mate-common (>= 1.18),
                x11proto-kb-dev,
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: http://www.mate-desktop.org/
 Vcs-Browser: https://salsa.debian.org/debian-mate-team/mate-settings-daemon
