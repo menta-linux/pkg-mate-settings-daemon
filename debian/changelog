@@ -1,3 +1,50 @@
+mate-settings-daemon (1.29.1+git20261118.e39a109-1menta1) unstable; urgency=medium
+
+  * Menta Linux build of upstream master at commit e39a109 (2026-11-18,
+    'Add support for building with Ubuntu AppIndicator'), 6 commits after
+    1.29.1. Orig tarball is a git snapshot. Needed for the new mouse key
+    org.mate.peripherals-mouse natural-scroll (commit 623df46) used by the
+    mate-control-center mouse capplet.
+  * Other upstream changes: ayatana-appindicator is now optional, xrandr
+    follows the preferred mode on hotplug_mode_update outputs, clipboard
+    trap fix, edit-clear-all icon.
+  * debian/rules: Pass --enable-appindicator=yes (upstream default is auto)
+    so the build fails if libayatana-appindicator is missing.
+  * debian/patches: Keep 0001 (upstream PR #452, not merged yet), 1001
+    (RDA) and 1002 (rfkill debounce); all refreshed for current master.
+  * CI: fetch the upstream commit from git instead of a release tarball.
+
+ -- Menta Linux <packages@menta-linux.invalid>  Mon, 23 Nov 2026 10:00:00 -0700
+
+mate-settings-daemon (1.29.1-1menta2) unstable; urgency=medium
+
+  * Add upstream PR #452 (wlrandr: add WLRANDR_3 with a monitor id and the
+    primary monitor) as debian/patches/0001_wlrandr-monitor-id-primary.patch.
+    Existing patches 1001 and 1002 are still needed (not merged upstream).
+  * debian/rules: Use --enable-wayland=yes, --enable-polkit=yes and --with-x
+    so configure fails instead of silently skipping features.
+  * debian/control: Require libmate-desktop-dev (>= 1.29.1-1menta2~), the
+    Menta build with Wayland monitor information (mate-desktop PR #722).
+  * CI: build for unstable and trixie, install mate-desktop and
+    gtk-layer-shell from Menta rolling releases.
+
+ -- Menta Linux <packages@menta-linux.invalid>  Sun, 22 Nov 2026 21:30:00 -0700
+
+mate-settings-daemon (1.29.1-1menta1) unstable; urgency=medium
+
+  * Menta Linux rebuild: new upstream release 1.29.1 (development
+    snapshot).
+  * debian/control: Build-Depend on libgtk-layer-shell-dev, libwayland-
+    dev, wayland-protocols, libayatana-appindicator3-dev (Wayland
+    support) and libatspi2.0-dev (key monitoring); require libmate-
+    desktop-dev >= 1.27.1.
+  * debian/rules: Explicitly enable Wayland, PolicyKit, smartcard,
+    libnotify, libatspi, libcanberra and libmatemixer support so the
+    build fails if any is unavailable.
+  * debian/watch: Track GitHub releases.
+
+ -- Menta Linux <packages@menta-linux.invalid>  Sat, 14 Nov 2026 17:18:36 -0700
+
 mate-settings-daemon (1.26.1-1) unstable; urgency=medium
 
   * New upstream release.

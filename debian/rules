@@ -32,7 +32,16 @@ override_dh_auto_configure:
 		--libexecdir=/usr/libexec \
 		--disable-static \
 	        $(WITHOUT_RFKILL) \
-		--enable-pulse
+		--enable-pulse \
+		--enable-wayland=yes \
+		--enable-appindicator=yes \
+		--enable-polkit=yes \
+		--with-x \
+		--enable-smartcard-support \
+		--with-libnotify \
+		--with-libatspi \
+		--with-libcanberra \
+		--with-libmatemixer
 
 override_dh_makeshlibs:
 

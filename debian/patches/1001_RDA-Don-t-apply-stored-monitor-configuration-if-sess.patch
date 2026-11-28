@@ -4,23 +4,21 @@ Date: Wed, 18 Dec 2019 09:11:12 +0100
 Subject: [PATCH] RDA: Don't apply stored monitor configuration if session is
  remote.
 
+Description: refreshed for 1.29.1 (context changes in configure.ac and xrandr Makefile.am)
 ---
- configure.ac                        | 11 +++++++++++
- plugins/xrandr/Makefile.am          |  2 ++
- plugins/xrandr/msd-xrandr-manager.c | 10 ++++++++++
- 3 files changed, 23 insertions(+)
-
---- a/configure.ac
-+++ b/configure.ac
-@@ -61,6 +61,7 @@
+Index: src/configure.ac
+===================================================================
+--- src.orig/configure.ac
++++ src/configure.ac
+@@ -60,6 +60,7 @@ LIBMATEKBD_REQUIRED_VERSION=1.17.0
  LIBNOTIFY_REQUIRED_VERSION=0.7.0
  LIBATSPI_REQUIRED_VERSION=2.0
  LIBMATEMIXER_REQUIRED_VERSION=1.10.0
 +RDA_REQUIRED_VERSION=0.0.3
+ APPINDICATOR_REQUIRED=0.0.13
  
  PKG_CHECK_MODULES(SETTINGS_DAEMON,
- 	glib-2.0 >= $GLIB_REQUIRED_VERSION
-@@ -386,6 +387,15 @@
+@@ -484,6 +485,15 @@ fi
  AM_CONDITIONAL(BUILD_RFKILL, [test x"$enable_rfkill" = x"yes"])
  
  # ---------------------------------------------------------------------------
@@ -36,15 +34,17 @@ Subject: [PATCH] RDA: Don't apply stored monitor configuration if session is
  # Enable Profiling
  # ---------------------------------------------------------------------------
  AC_ARG_ENABLE(profiling,
-@@ -502,4 +512,5 @@
-     System nssdb:             ${NSS_DATABASE}
+@@ -612,4 +622,5 @@ ${NSS_DATABASE:+\
+     System nssdb ............: ${NSS_DATABASE}
  }\
-     Profiling support:        ${enable_profiling}
-+    RD awareness:             ${have_rda}
+     Profiling support .......: ${enable_profiling}
++    RD awareness ............: ${have_rda}
  "
---- a/plugins/xrandr/Makefile.am
-+++ b/plugins/xrandr/Makefile.am
-@@ -67,6 +67,7 @@
+Index: src/plugins/xrandr/Makefile.am
+===================================================================
+--- src.orig/plugins/xrandr/Makefile.am
++++ src/plugins/xrandr/Makefile.am
+@@ -60,6 +60,7 @@ libxrandr_la_CPPFLAGS =						\
  libxrandr_la_CFLAGS =			\
  	$(SETTINGS_PLUGIN_CFLAGS)	\
  	$(LIBNOTIFY_CFLAGS)		\
@@ -52,17 +52,19 @@ Subject: [PATCH] RDA: Don't apply stored monitor configuration if session is
  	$(MATE_DESKTOP_CFLAGS)		\
  	$(AM_CFLAGS)			\
  	$(WARN_CFLAGS)
-@@ -77,6 +78,7 @@
+@@ -70,6 +71,7 @@ libxrandr_la_LDFLAGS = 			\
  libxrandr_la_LIBADD  =			\
  	$(SETTINGS_PLUGIN_LIBS)		\
  	$(LIBNOTIFY_LIBS)		\
 +	$(RDA_LIBS)			\
- 	$(MATE_DESKTOP_LIBS)
- 
- plugin_in_files =			\
---- a/plugins/xrandr/msd-xrandr-manager.c
-+++ b/plugins/xrandr/msd-xrandr-manager.c
-@@ -51,6 +51,10 @@
+ 	$(MATE_DESKTOP_LIBS)		\
+ 	$(X11_LIBS)			\
+ 	$(NULL)
+Index: src/plugins/xrandr/msd-xrandr-manager.c
+===================================================================
+--- src.orig/plugins/xrandr/msd-xrandr-manager.c
++++ src/plugins/xrandr/msd-xrandr-manager.c
+@@ -52,6 +52,10 @@
  #include <libnotify/notify.h>
  #endif
  
@@ -73,13 +75,13 @@ Subject: [PATCH] RDA: Don't apply stored monitor configuration if session is
  #include "mate-settings-profile.h"
  #include "msd-xrandr-manager.h"
  
-@@ -2410,6 +2414,12 @@
+@@ -2472,6 +2476,12 @@ apply_intended_configuration (MsdXrandrM
          GError *my_error;
          gboolean result;
  
 +#ifdef HAVE_RDA
 +	if (rda_session_is_remote()) {
-+		return;
++		return FALSE;
 +	}
 +#endif
 +
