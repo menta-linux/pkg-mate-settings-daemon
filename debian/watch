@@ -1,7 +1,0 @@
-version=4
-# Upstream attaches one mate-settings-daemon-X.Y.Z.tar.xz asset to each GitHub release. The release *tags* are read from the public releases page (no
-# API token and no API rate limit); the asset URL and the file name are derived from the tag. Exactly ONE capture group of version characters.
-opts="downloadurlmangle=s%.*/releases/tag/v([\d.]+)$%https://github.com/mate-desktop/mate-settings-daemon/releases/download/v$1/mate-settings-daemon-$1.tar.xz%,\
-filenamemangle=s%.*/releases/tag/v([\d.]+)$%mate-settings-daemon-$1.tar.xz%" \
-https://github.com/mate-desktop/mate-settings-daemon/releases \
-    .*/releases/tag/v([\d.]+)

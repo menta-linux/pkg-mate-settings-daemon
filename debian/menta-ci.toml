@@ -1,0 +1,3 @@
+schema_version = 1
+upstream_url = "https://github.com/mate-desktop/mate-settings-daemon"
+release_policy = "releases"
