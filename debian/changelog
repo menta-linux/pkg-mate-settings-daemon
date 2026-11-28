@@ -1,10 +1,3 @@
-mate-settings-daemon (1.29.2-1menta1) unstable; urgency=medium
-
-  * New upstream release 1.29.2.
-  * Drop Menta's 0001_wlrandr-monitor-id-primary.patch (upstream PR #452 is merged). Debian's 1001 and 1002 are kept.
-
- -- Menta Linux <packages@menta-linux.invalid>  Fri, 27 Nov 2026 21:30:00 -0700
-
 mate-settings-daemon (1.29.1+git20261118.e39a109-1menta1) unstable; urgency=medium
 
   * Menta Linux build of upstream master at commit e39a109 (2026-11-18,
